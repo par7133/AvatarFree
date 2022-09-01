@@ -21,3 +21,6 @@ As you are going to run Avatar Free in the PHP process context, using a limited 
 
 Hope you can enjoy it and let us know about any feedback: <a href="mailto:info@avatarfree.org" style="color:#e6d236;">info@avatarfree.org</a>
 	
+###Screenshots:
+
+![Avatar Free in action](/Public/res/screenshot1.jpg)<br>
