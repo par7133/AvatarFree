@@ -312,7 +312,7 @@
 
   <link rel="shortcut icon" href="/favicon.ico" />
 
-  <meta name="description" content="Welcome to Avatar Free! Let everyone have its social presence."/>
+  <meta name="description" content="Welcome to Avatar Free! Let everyone own its social presence."/>
   <meta name="keywords" content="Avatar Free,social,presence,avatarfree.org,on,premise,solution"/>
   <meta name="robots" content="index,follow"/>
   <meta name="author" content="5 Mode"/>
