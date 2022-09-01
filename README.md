@@ -3,9 +3,9 @@ Let everyone have its social presence.<br>
 
 Hello and welcome to Avatar Free!<br>
 	  
-Avatar Free is a light, simple, software on premise to build your social presence.<br><br>
+Avatar Free is a light, simple, software on premise to build your social presence.<br>
 	   
-Avatar Free is released under GPLv3 license, it is supplied AS-IS and we do not take any responsibility for its misusage.<br><br>
+Avatar Free is released under GPLv3 license, it is supplied AS-IS and we do not take any responsibility for its misusage.<br>
 	   
 First step, use the password box and salt fields to create the hash to insert in the config file. Remember to manually set there also the salt value.<br>
 	   
