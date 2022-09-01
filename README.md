@@ -16,7 +16,7 @@ As you are going to run Avatar Free in the PHP process context, using a limited 
 <li>Set IMAGE_MAX_SIZE and DOC_MAX_SIZE (remember that some PHP settings could limit the upload behaviour of Avatar free</li>
 </ol> 
 
-You can access your avatar by http://yourdomain.com/<your_avatar>. Login for the admin view.<br>
+You can access your avatar by http://yourdomain.com/<your_avatar>. Login with the password for the admin view.<br>
 
 Hope you can enjoy it and let us know about any feedback: <a href="mailto:info@avatarfree.org" style="color:#e6d236;">info@avatarfree.org</a>
 
