@@ -23,4 +23,4 @@ Hope you can enjoy it and let us know about any feedback: <a href="mailto:info@a
 	
 ###Screenshots:
 
-![Avatar Free in action](/Public/res/screenshot1.jpg)<br>
+![Avatar Free in action](/Public/res/screenshot1.png)<br>
