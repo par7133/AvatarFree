@@ -1,0 +1,123 @@
+<?php
+
+/**
+ * Copyright 2021, 2024 5 Mode
+ *
+ * This file is part of Avatar Free.
+ * 
+ * Avatar Free is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * Avatar Free is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.  
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with Avatar Free. If not, see <https://www.gnu.org/licenses/>.
+ *
+ * config.inc
+ * 
+ * Avatar Free configuration settings.
+ *
+ * @author Daniele Bonini <my25mb@aol.com>
+ * @copyrights (c) 2021, 2024, 5 Mode     
+ */
+
+define('DEBUG', false);
+define('ADMIN_VIEW', "1");
+define('PUBLIC_VIEW', "2");
+ 
+define('APP_NAME', "AvatarFree");
+
+// password: your_password
+// salt: your_salt
+define('APP_HASH', "");
+define('APP_SALT', "yoursalt");
+
+define('APP_HOST', "YourAvatarFree.com");
+define('APP_PATH', "/var/www/YourWebApp/Public");
+define('APP_PRIVATE_PATH', "/var/www/YourWebApp/Private");
+define('APP_SCRIPT_PATH', "/var/www/YourWebApp/Private/scripts");
+define('APP_AJAX_PATH', "/var/www/YourWebApp/Private/scripts_ajax");
+define('APP_ERROR_PATH', "/var/www/YourWebApp/Private/error");
+define('APP_DATA_PATH', "/var/www/YourWebApp/Private/data");
+define('APP_LICENSE', <<<LICENSETEXT
+Copyright (c) 2016, 2024, 5 Mode
+All rights reserved.
+
+This file is part of Avatar Free.
+
+Avatar Free is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Avatar Free is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.  
+
+You should have received a copy of the GNU General Public License
+along with Avatar Free. If not, see <https://www.gnu.org/licenses/>.
+
+https://opensource.org/licenses/GPL-3.0
+LICENSETEXT
+);
+// Default Locale, in two letters format
+define('APP_DEF_LANG', "en-US");
+define('APP_DEF_PROFILE_PIC', "/res/pic1.png");
+define('APP_IMAGE_MAX_SIZE', 496000);
+define('APP_DOC_MAX_SIZE', 496000);
+
+$CONFIG = [
+
+   'DEBUG' => true,
+   'ADMIN_VIEW' => "1",
+   'PUBLIC_VIEW' => "2",
+ 
+   'APP' => [
+      'NAME' => "AvatarFree",
+      // password: your_password
+      // salt: your_salt
+      'HASH' => "",
+      'SALT' => "yoursalt",        
+      'HOST' => "YourAvatarFree.com", 
+      'PATH' => "/var/www/YourWebApp/Public",
+      'PRIVATE_PATH' => "/var/www/YourWebApp/Private", 
+      'SCRIPT_PATH' => "/var/www/YourWebApp/Private/scripts",
+      'AJAX_PATH' => "/var/www/YourWebApp/Private/scripts_ajax",
+      'ERROR_PATH' => "/var/www/YourWebApp/Private/error",
+      'DATA_PATH' => "/var/www/YourWebApp/Private/data",
+      'LICENSE' => <<<LICENSETEXT
+Copyright (c) 2016, 2024, 5 Mode
+All rights reserved.
+
+This file is part of Avatar Free.
+
+Avatar Free is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Avatar Free is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.  
+
+You should have received a copy of the GNU General Public License
+along with Avatar Free. If not, see <https://www.gnu.org/licenses/>.
+
+https://opensource.org/licenses/GPL-3.0 
+LICENSETEXT
+             ,
+      'DEF_LANG' => "en-US",
+      'DEF_PROFILE_PIC' => "/res/pic1.png", 
+      'IMAGE_MAX_SIZE' => 496000, 
+      'DOC_MAX_SIZE' => 496000,
+      ]
+    
+    ];  
+
