@@ -1,5 +1,4 @@
 # Avatar Free
-Let everyone have its social presence.<br>
 
 Hello and welcome to Avatar Free!<br>
 	  
