@@ -2,7 +2,7 @@
 
 Hello and welcome to Avatar Free!<br>
 	  
-Avatar Free is a light, simple, software on premise to build your social presence.<br>
+Avatar Free is a light, simple, software on premise to build and own your social presence.<br>
 	   
 Avatar Free is released under GPLv3 license, it is supplied AS-IS and we do not take any responsibility for its misusage.<br>
 	   
