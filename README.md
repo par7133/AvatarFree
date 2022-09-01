@@ -13,7 +13,7 @@ As you are going to run Avatar Free in the PHP process context, using a limited 
 <ol>
 <li>Check the write permissions of your "data" folder in your web app Private path; and set its path in the config file.</li>
 <li>Set the default Locale.</li>
-<li>Set IMAGE_MAX_SIZE and DOC_MAX_SIZE (remember that some PHP settings could limit the upload behaviour of Avatar free</li>
+<li>Set IMAGE_MAX_SIZE and DOC_MAX_SIZE (remember that some PHP settings could limit the upload behaviour of Avatar Free too)</li>
 </ol> 
 
 You can access your avatar by http://yourdomain.com/<your_avatar>. Login with the password for the admin view.<br>
