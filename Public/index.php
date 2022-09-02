@@ -51,7 +51,7 @@ switch ($url) {
     $pattern = APP_DATA_PATH . DIRECTORY_SEPARATOR . "*";
     $aAvatarPaths = glob($pattern, GLOB_ONLYDIR);
     if (empty($aAvatarPaths)) {
-      die("<br>&nbsp;No avatar exists yet: type in the url your avatar name like http://" . $_SERVER['HTTP_HOST']. "/&lt;your avatar&gt; <br>&nbsp;login and drag-n-drop here all the resources you want to associate to it. <br><br>&nbsp;Links by text and first dropped picture will be your avatar image.");
+      die("<br>&nbsp;No avatar exists yet: type in the url with your avatar name like http://" . $_SERVER['HTTP_HOST']. "/&lt;your avatar&gt;.<br>&nbsp;Login with the password and drag-n-drop here all the resources you want to associate to it. <br><br>&nbsp;Links by text and first dropped picture will be your avatar image.");
     } else {
       define("AVATAR_NAME", basename($aAvatarPaths[0]));
     }
@@ -130,7 +130,7 @@ switch ($url) {
     define("SCRIPT_FILENAME", "home.php");   
 
     define("AVATAR_NAME", $url);
-    
+
     break;
 }
 
