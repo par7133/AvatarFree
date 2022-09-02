@@ -45,6 +45,13 @@
  
  
  // PAGE PARAMETERS
+ $lang = APP_DEF_LANG;
+ $lang1 = substr(filter_input(INPUT_GET, "hl", FILTER_SANITIZE_STRING), 0, 5);
+ if ($lang1 !== PHP_STR) {
+   $lang = $lang1;
+ }
+ $shortLang = getShortLang($lang);
+ 
  $password = filter_input(INPUT_POST, "Password");
  if ($password !== PHP_STR) {	
    $hash = hash("sha256", $password . APP_SALT, false);
@@ -312,7 +319,7 @@
 
   <link rel="shortcut icon" href="/favicon.ico" />
 
-  <meta name="description" content="Welcome to Avatar Free! Let everyone own its social presence."/>
+  <meta name="description" content="Welcome to Avatar Free! Let everyone have its social presence."/>
   <meta name="keywords" content="Avatar Free,social,presence,avatarfree.org,on,premise,solution"/>
   <meta name="robots" content="index,follow"/>
   <meta name="author" content="5 Mode"/>
@@ -331,9 +338,9 @@
   
   <body style="background:url('/res/bg1.jpg') no-repeat; background-size: cover; background-attachment: fixed; background-position: center;">
 
-   <div style="width:100%;height:fit-content;position:fixed;background:yellow;color:darkorange;text-align:center;cursor:pointer;" onclick="showHowTo();"><br>How-to: Manage your avatars in Avatar Free<br><br></div> 
+   <div style="width:100%;height:fit-content;position:fixed;background:yellow;color:darkorange;text-align:center;cursor:pointer;" onclick="showHowTo();"><br><?PHP echo(getResource0("How-to: Manage your avatars in Avatar Free", $lang));?><br><br></div> 
 
-  <form id="frmUpload" role="form" method="post" action="/<?PHP echo(AVATAR_NAME);?>" target="_self" enctype="multipart/form-data">  
+  <form id="frmUpload" role="form" method="post" action="/<?PHP echo(AVATAR_NAME);?>?hl=<?PHP echo($lang);?>" target="_self" enctype="multipart/form-data">  
     
   <div class="dragover" style="width:100%;height:100%;border:0px solid red;" dropzone="copy">  
     
@@ -349,15 +356,15 @@
  </form>   
            
   <div id="footerCont">&nbsp;</div>
-  <div id="footer"><span style="background:#FFFFFF; opacity:0.7;">&nbsp;&nbsp;<a class="aaa" href="dd.html">Disclaimer</a>.&nbsp;&nbsp;A <a href="http://5mode.com" class="aaa">5 Mode</a> project and <a href="http://demo.5mode.com" class="aaa">WYSIWYG</a> system. Some rights reserved.</span></div>
+  <div id="footer"><span style="background:#FFFFFF; opacity:0.7;">&nbsp;&nbsp;<a class="aaa" href="dd.html">Disclaimer</a>.&nbsp;&nbsp;A <a href="http://5mode.com" class="aaa">5 Mode</a> project and <a href="http://demo.5mode.com" class="aaa">WYSIWYG</a> system. <?PHP echo(getResource0("Some rights reserved", $lang));?></span></div>
            
 <?PHP else: ?>          
 
   <body style="background:#dadada no-repeat; background-size: cover; background-attachment: fixed; background-position: center;">
 
-   <div style="width:100%;height:fit-content;position:fixed;background:yellow;color:darkorange;text-align:center;cursor:pointer;z-index:99999;" onclick="showHowTo();"><br>How-to: Manage your avatars in Avatar Free<br><br></div> 
+   <div style="width:100%;height:fit-content;position:fixed;background:yellow;color:darkorange;text-align:center;cursor:pointer;z-index:99999;" onclick="showHowTo();"><br><?PHP echo(getResource0("How-to: Manage your avatars in Avatar Free", $lang));?><br><br></div> 
 
-   <form id="frmUpload" role="form" method="post" action="/<?PHP echo(AVATAR_NAME);?>" target="_self" enctype="multipart/form-data">  
+   <form id="frmUpload" role="form" method="post" action="/<?PHP echo(AVATAR_NAME);?>?hl=<?PHP echo($lang);?>" target="_self" enctype="multipart/form-data">  
    
    <div id="title" style="position:relative;top:80px;left:50px;width:100%;float:left;font-size:25px;font-family:'Press Start 2P';border:0px solid blue;"> 
         <div id="cudoz" style="width:255px;height:255px;float:left;border:0px solid yellow;">
@@ -368,16 +375,16 @@
         </div>  
         <div id="cudoz" style="width:250px;height:255px;padding-top:116px;float:left;border:0px solid green;vertical-align:middle;">
         <?PHP for ($i=1;$i<=$CUDOZ;$i++): ?>
-             <img id="cudozentry<?PHP echo($i);?>" src="/res/chicca_it.png" style="float:left;width:46px">    
+             <img id="cudozentry<?PHP echo($i);?>" src="/res/chicca_<?PHP echo($shortLang);?>.png" style="float:left;width:46px">    
         <?PHP endfor; ?>
         <?PHP for ($i=$CUDOZ+1;$i<=5;$i++): ?>
              <img id="cudozentry<?PHP echo($i);?>" src="/res/chiccadis.png" style="float:left;width:46px">    
         <?PHP endfor; ?>               
          </div> 
 
-        <div id="cvs" style="float:right;border:3px solid darkgray;border-radius:4px;padding:4px;background:#dadada;font-size:20px;font-family:'Press Start 2P';">  
+        <div id="cvs" style="float:right;border:3px solid darkgray;border-radius:4px;padding:4px;background:#dadada;font-size:20px;font-family:'Press Start 2P';font-weight:900;">  
           
-                   <div style="float:left;width:47px;margin-top:20px;margin-left:7px;">CV</div>
+                   <div style="float:left;width:47px;margin-top:20px;margin-left:7px;"><?PHP echo(getResource0("CV", $lang));?></div>
           
        <?PHP
        $pattern = $CV_PATH . DIRECTORY_SEPARATOR . "*";
@@ -416,8 +423,8 @@
    if (empty($aFilePaths)): ?>
              <div class="blog-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
               <div class="blog-entry" style="width:100%;margin-bottom:0px;min-height:120px;background:#FFFFFF;border:1px solid black;padding:30px;">  
-                Hello from 5 Mode,<br>
-                This is just an example of blog entry.
+                <?PHP echo(getResource0("Hello from 5 Mode", $lang));?>,<br>
+                <?PHP echo(getResource0("This is just an example of blog entry", $lang));?>.
               </div> 
              </div>  
         <?PHP else: ?>
@@ -453,7 +460,7 @@
              
               <div class="image-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
                   <div style="width:100%;border:0px solid black;"><img src="/res/imgicon.png" align="center" style="width:64px;border:1px solid gray;"></div>
-                  <div style="margin-top:10px;">Sample</div>
+                  <div style="margin-top:10px;"><?PHP echo(getResource0("Sample", $lang));?></div>
               </div> 
              
         <?PHP else: ?>
@@ -487,7 +494,7 @@
  <div id="friends" style="float:left;margin:6%;margin-top:50px;width:90%;font-size:15px;font-family:Arial,Sans,Verdana;color:#000000;background:#dadada">    
    <div class="friends-content" style="width:100%;float:left;border:3px solid transparent;border-radius:4px;color:#000000;padding-top:10px;text-align:center;"> 
      
-      <div style="font-family:'Press Start 2P';width:fit-content;margin:auto;color:#245269;">My Network:<br><br>
+      <div style="font-family:'Press Start 2P';width:fit-content;margin:auto;color:#245269;"><?PHP echo(getResource0("My Network", $lang));?>:<br><br>
      
       <?PHP
    $pattern = $FRIENDS_PATH . DIRECTORY_SEPARATOR . "*.txt";
@@ -497,7 +504,7 @@
               <div class="friend-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
                    <a href="http://5mode.com"> 
                    <div style="width:100%;border:0px solid black;"><img src="/res/pic1.png" align="center" style="width:64px;border:0px solid gray;"></div>
-                   <div style="margin-top:10px;">Sample</div>
+                   <div style="margin-top:10px;"><?PHP echo(getResource0("Sample", $lang));?></div>
                    </a>
               </div> 
              
@@ -532,23 +539,31 @@
    </div> 
     
     
-  <div id="passworddisplay" style="float:left;position:fixed;top:680px;left:50px;width:255px;height:120px;background:darkgray;text-align:left;white-space:nowrap; font-family:'Bungee Hairline'; color:#d4b0dc; font-weight:900;z-index:99999;">
+  <div id="passworddisplay" style="float:left;position:fixed;top:680px;left:50px;width:255px;height:120px;background:darkgray;text-align:left;white-space:nowrap; font-family:'Bungee Hairline'; color:#000000; font-weight:900;z-index:99999;">
        <br>  
-        &nbsp;&nbsp;<input type="password" id="Password" name="Password" placeholder="password" style="font-size:18px;  background:transparent; width: 60%; border-radius:3px; font-weight:900;" value="<?php echo($password);?>" autocomplete="off">&nbsp;<input type="submit" value="Go" style="text-align:left;width:25%;color:#000000;"><br>
+        &nbsp;&nbsp;<input type="password" id="Password" name="Password" placeholder="password" style="font-size:18px;  background:transparent; width: 60%; border-radius:3px; font-weight:900;" value="<?php echo($password);?>" autocomplete="off">&nbsp;<input type="submit" value="<?PHP echo(getResource0("Go", $lang));?>" style="text-align:left;width:25%;color:#000000;"><br>
         &nbsp;&nbsp;<input type="text" id="Salt" placeholder="salt" style="position:relative; top:+5px; font-size:18px; background:transparent; width: 90%; border-radius:3px; font-weight:900;" autocomplete="off"><br>
         <div style="text-align:center;">
-           <a href="#" onclick="showEncodedPassword();" style="position:relative; left:-2px; top:+5px; font-size:18px; font-weight:900; color:#000000;">Hash Me!</a>
+           <a href="#" onclick="showEncodedPassword();" style="position:relative; left:-2px; top:+5px; font-size:18px; font-weight:900; color:#000000;"><?PHP echo(getResource0("Hash Me", $lang));?>!</a>
         </div>
  </div> 
 
  </form>       
      
   <div id="footerCont">&nbsp;</div>
-  <div id="footer"><span style="background:#FFFFFF; opacity:0.7;">&nbsp;&nbsp;<a class="aaa" href="dd.html">Disclaimer</a>.&nbsp;&nbsp;A <a href="http://5mode.com" class="aaa">5 Mode</a> project and <a href="http://demo.5mode.com" class="aaa">WYSIWYG</a> system. Some rights reserved.</span></div>
+  <div id="footer">
+    <div style="float:left">
+        <select id="cbLang" style="margin-left:22px;font-size:10px;" onchange="changeLang(this);">
+          <option value="en-US" <?PHP echo($lang==PHP_EN?"selected":"");?>>en</option>
+            <option value="it-IT" <?PHP echo($lang==PHP_IT?"selected":"");?>>it</option>
+            <option value="zh-CN" <?PHP echo($lang==PHP_CN?"selected":"");?>>cn</option>
+        </select> 
+    </div>
+    <span style="background:#FFFFFF; opacity:0.7;">&nbsp;&nbsp;<a class="aaa" href="dd.html">Disclaimer</a>.&nbsp;&nbsp;A <a href="http://5mode.com" class="aaa">5 Mode</a> project and <a href="http://demo.5mode.com" class="aaa">WYSIWYG</a> system. <?PHP echo(getResource0("Some rights reserved", $lang));?>.</span></div>
            
  <?PHP endif; ?>           
      
-<script src="/js/home-js.php?hl=<?PHP echo($lang);?>&av=<?PHP echo(AVATAR_NAME);?>&cv=<?PHP echo($CURRENT_VIEW);?>&cu=<?PHP echo($CUDOZ);?>" type="text/javascript"></script>
+<script src="static/js/home-js.php?hl=<?PHP echo($lang);?>&av=<?PHP echo(AVATAR_NAME);?>&cv=<?PHP echo($CURRENT_VIEW);?>&cu=<?PHP echo($CUDOZ);?>" type="text/javascript"></script>
 
 <?php if (file_exists(APP_PATH . DIRECTORY_SEPARATOR . "metrics.html")): ?>
 <?php include("../../Public/metrics.html"); ?> 
