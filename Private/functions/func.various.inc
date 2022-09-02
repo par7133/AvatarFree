@@ -206,3 +206,18 @@ function HTMLencode(?string $s, bool $withBR = false): string
 } 
 }
 
+if (!function_exists("getShortLang")) { 
+/**
+ * Get a the short of the language code 
+ * 
+ * @param string $lang the language code to short
+ * @return string the short lang  
+ */  
+function getShortLang($lang) {
+  if ($lang == PHP_CN) {
+    return "cn";
+  } else { 
+    return left($lang, 2);
+  }
+}
+}
