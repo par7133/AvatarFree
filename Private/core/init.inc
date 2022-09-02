@@ -42,6 +42,7 @@ require CONFIG_PATH . DIRECTORY_SEPARATOR . "const.php.inc";
 
 define("FUNCTIONS_PATH", __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "functions");
 
+require FUNCTIONS_PATH . DIRECTORY_SEPARATOR . "func.string.inc";
 require FUNCTIONS_PATH . DIRECTORY_SEPARATOR . "func.various.inc";
 
 
