@@ -37,6 +37,7 @@
  if ($lang1 !== PHP_STR) {
    $lang = $lang1;
  }
+ $shortLang = getShortLang($lang);
  
  $AVATAR_NAME=filter_input(INPUT_GET, "av", FILTER_SANITIZE_STRING);
  
@@ -47,6 +48,9 @@
  
 
  function showHowTo() {
+ 
+ <?PHP if ($lang == PHP_EN): ?>
+ 
    alert("Here how to manage your avatars in Avatar Free:\n" +
          "- Type in the url of your avatar like http://" + "<?PHP echo($_SERVER['HTTP_HOST']);?>" + "/<your avatar>.\n" +
          "- Login with your pasword.\n" +
@@ -56,6 +60,32 @@
          "   c. Drop in texts with link separeted by <ENTER> to shape your friends.\n" +
          "\n" +
          "Enjoy!"); 
+         
+  <?PHP elseif ($lang == PHP_IT): ?>       
+
+   alert("Ecco come gestire i tuoi avatar in Avatar Free:\n" +
+         "- Scrivi l'url del tuo avatar come http://" + "<?PHP echo($_SERVER['HTTP_HOST']);?>" + "/<tuo avatar>.\n" +
+         "- Loggati con la pasword.\n" +
+         "- Fai il drag-n-drop nella finestra del browser di tutte le risorse che ritieni: \n" +
+         "   a. Trascina file .txt per creare il tuo blog.\n" +
+         "   b. Trascina immagini per creare la galleria; la prima sara' il tuo avatar.\n" +
+         "   c. Trascina link da testo separati da <INVIO> per creare i tuoi amici.\n" +
+         "\n" +
+         "Buon proseguimento!"); 
+         
+  <?PHP elseif ($lang == PHP_CN): ?>              
+
+   alert("在这里如何免费管理您的化身:\n" +
+         "- 以以下格式输入阿凡达的URLhttp://" + "<?PHP echo($_SERVER['HTTP_HOST']);?>" + "/<你的头像>.\n" +
+         "- 使用密码登录.\n" +
+         "- 在浏览器窗口中拖动n-drop您喜欢的所有资源: \n" +
+         "   a. 放入.txt文件以形成您的博客.\n" +
+         "   b. 放入图片以塑造画廊； 第一个作为您的头像.\n" +
+         "   c. 删除带有链接<enter>分隔的链接以塑造您的朋友的文本.\n" +
+         "\n" +
+         "Enjoy!"); 
+         
+  <?PHP endif; ?>                
  }  
 
  function startApp() {
@@ -93,8 +123,12 @@ function showEncodedPassword() {
   //  return;  
   //}	   	
   passw = encryptSha2( $("#Password").val() + $("#Salt").val());
-  msg = "Please set your hash in the config file with this value:";
+  msg = "<?PHP echo(getResource0("Please set your hash in the config file with this value", $lang, "/js/home-js.php"));?>:";
   alert(msg + "\n\n" + passw);	
+}
+
+function changeLang(tthis) {
+  window.open("/<?PHP echo($AVATAR_NAME);?>?hl="+$(tthis).val(),"_self");
 }
 
 function reload() {
@@ -174,7 +208,7 @@ $("div.dragover").on("drop", function(e) {
       document.getElementById("frmUpload").submit();
       
     } else {
-      alert("ale!");
+      //alert("ale!");
     }  
   }
 
@@ -212,7 +246,7 @@ window.addEventListener("load", function() {
 
   // display cudoz
   for (i=1;i<=<?PHP echo($CUDOZ);?>;i++) {
-    $("#cudozentry"+i).get(0).src="/res/chicca_it.png";
+    $("#cudozentry"+i).get(0).src="/res/chicca_<?PHP echo($shortLang);?>.png";
   }  
 
   setTimeout("_startApp()", 10000);
