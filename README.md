@@ -1,3 +1,9 @@
+<p align="center">
+    <a href="https://avatarfree.org">
+        <img src="/Public/res/AFlogo.png" title="Avatar Free" alt="Avatar Free">
+    </a>
+</p>
+
 # Avatar Free
 
 Hello and welcome to Avatar Free!<br>
