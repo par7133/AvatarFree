@@ -121,3 +121,52 @@ LICENSETEXT
     
     ];  
 
+
+$LOCALE = [
+
+  'it-IT' => [
+    
+    '/home.php' => [        
+      'ping' => "pong",
+      'How-to: Manage your avatars in Avatar Free' => "How-to: Gestire i tuoi avatar in Avatar Free",  
+      'CV' => "CV",  
+      'Sample' => "Esempio",   
+      'My Network' => "Network",
+      'Hello from 5 Mode' => "Ciao da 5 Mode",  
+      'This is just an example of blog entry' => "Questo e' giusto un esempio di post nel blog",  
+      'Go' => "Vai",  
+      'Hash Me' => "Codificami",  
+      'Some rights reserved' => "Alcuni diritti riservati"  
+         ],
+     
+    '/js/home-js.php' => [
+      'ping' => "pong",
+      'Please set your hash in the config file with this value' => "Puoi impostare il tuo hash nel file config con questo valore"   
+         ]  
+      
+      ],
+
+  'zh-CN' => [
+    
+    '/home.php' => [        
+      'ping' => "pong",
+      'How-to: Manage your avatars in Avatar Free' => "HOW-TO: 免费管理您的化身",    
+      'CV' => "简历",  
+      'Sample' => "样本",  
+      'My Network' => "我的网络",  
+      'Hello from 5 Mode' => "您好5 MODE",  
+      'This is just an example of blog entry' => "这只是博客条目的一个例子",    
+      'Go' => "去",  
+      'Hash Me' => "哈希我",  
+      'Some rights reserved' => "保留一些权利"  
+         ],
+     
+    '/js/home-js.php' => [
+      'ping' => "pong",
+      'Please set your hash in the config file with this value' => "请在配置文件中设置您的哈希"     
+         ]  
+      
+      ]
+    
+  ];
+
