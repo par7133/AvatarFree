@@ -69,8 +69,7 @@ LICENSETEXT
 // Default Locale, in two letters format
 define('APP_DEF_LANG', "en-US");
 define('APP_DEF_PROFILE_PIC', "/res/pic1.png");
-define('APP_IMAGE_MAX_SIZE', 496000);
-define('APP_DOC_MAX_SIZE', 496000);
+define('APP_FILE_MAX_SIZE', 496000);
 
 $CONFIG = [
 
@@ -115,8 +114,7 @@ LICENSETEXT
              ,
       'DEF_LANG' => "en-US",
       'DEF_PROFILE_PIC' => "/res/pic1.png", 
-      'IMAGE_MAX_SIZE' => 496000, 
-      'DOC_MAX_SIZE' => 496000,
+      'FILE_MAX_SIZE' => 496000 
       ]
     
     ];  
