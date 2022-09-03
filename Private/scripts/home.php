@@ -37,9 +37,9 @@
  $FRIENDS_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "friends";      
  $BLOG_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "blog";      
  $GALLERY_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "gallery";      
- $TRES1_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "tres1";      
- $TRES2_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "tres2";
- $TRES3_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "tres3";
+ $MAGICJAR1_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "magicjar1";      
+ $MAGICJAR2_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "magicjar2";
+ $MAGICJAR3_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "magicjar3";
  
  $profilePic = APP_DEF_PROFILE_PIC;
  
@@ -66,6 +66,10 @@
    $CURRENT_VIEW = PUBLIC_VIEW;
  } 
 
+ $magicJar1 = (int)substr(filter_input(INPUT_POST, "txtMagicJar1"), 0, 1);
+ $magicJar2 = (int)substr(filter_input(INPUT_POST, "txtMagicJar2"), 0, 1);
+ $magicJar3 = (int)substr(filter_input(INPUT_POST, "txtMagicJar3"), 0, 1);
+
  
  function uploadNewRes() {
 
@@ -74,9 +78,12 @@
    global $FRIENDS_PATH;      
    global $BLOG_PATH;      
    global $GALLERY_PATH;      
-   global $TRES1_PATH;      
-   global $TRES2_PATH;
-   global $TRES3_PATH;
+   global $MAGICJAR1_PATH;      
+   global $MAGICJAR2_PATH;
+   global $MAGICJAR3_PATH;
+   global $magicJar1;
+   global $magicJar2;
+   global $magicJar3;
 
    //echo_ifdebug(true, "AVATAR_PATH#1=");
    //echo_ifdebug(true, $AVATAR_PATH);
@@ -185,54 +192,79 @@
        //$BLOG_PATH = APP_DATA_PATH . DIRECTORY_SEPARATOR . "blog";      
        //$GALLERY_PATH = APP_DATA_PATH . DIRECTORY_SEPARATOR . "gallery";      
        
-       switch ($fileExt) {
-         case "doc":
-         case "docx":
-         case "pdf":
-           $destPath = $CV_PATH;
-           break;
-         case "txt":
-           $destPath = $BLOG_PATH;
-           break;
-         case "png":
-         case "jpg":
-         case "jpeg":
-         case "gif":
-         case "webp":
-           $destPath = $GALLERY_PATH;
-           break;
-         default:
-           $destPath = $TRES1_PATH;
-           break;
+       $destPaths = [];
+       $destFullPaths = [];
+       
+       if ($magicJar1 != 0) {
+         $destPaths[] = $MAGICJAR1_PATH;
+         $destFullPaths[] = $destPaths[count($destPaths)-1] . DIRECTORY_SEPARATOR . $destFileName;
        }
-       $destFullPath = $destPath . DIRECTORY_SEPARATOR . $destFileName;
+       if ($magicJar2 != 0) {
+         $destPaths[] = $MAGICJAR2_PATH;
+         $destFullPaths[] = $destPaths[count($destPaths)-1] . DIRECTORY_SEPARATOR . $destFileName;
+       }
+       if ($magicJar3 != 0) {
+         $destPaths[] = $MAGICJAR3_PATH;
+         $destFullPaths[] = $destPaths[count($destPaths)-1] . DIRECTORY_SEPARATOR . $destFileName;
+       }
+       
+       if (empty($destPaths)) {
+       
+          switch ($fileExt) {
+            case "doc":
+            case "docx":
+            case "pdf":
+              $destPaths[] = $CV_PATH;
+              break;
+            case "txt":
+              $destPaths[] = $BLOG_PATH;
+              break;
+            case "png":
+            case "jpg":
+            case "jpeg":
+            case "gif":
+            case "webp":
+              $destPaths[] = $GALLERY_PATH;
+              break;
+            default:
+              $destPaths[] = $MAGICJAR1_PATH;
+              break;
+          }
+          $destFullPaths[] = $destPaths[0] . DIRECTORY_SEPARATOR . $destFileName;
+       }     
+       
+       $iPath = 0;
+       foreach($destFullPaths as $destFullPath) {
+       
+          if (file_exists($destFullPath)) {
+            echo("WARNING: destination already exists");
+            exit(1);
+          }	   
 
-       if (file_exists($destFullPath)) {
-         echo("WARNING: destination already exists");
-         return;
-       }	   
+          if (filesize($tmpFullPath) > APP_FILE_MAX_SIZE) {
+            echo("ERROR: file size(" . filesize($tmpFullPath) . ") exceeds app limit:" . APP_FILE_MAX_SIZE);
+            exit(1);
+          }
+          
+          if (!is_readable($AVATAR_PATH)) {
+            mkdir($AVATAR_PATH, 0777); 
+          }
 
-       //echo_ifdebug(true, "AVATAR_PATH#2=");
-       //echo_ifdebug(true, $AVATAR_PATH);
-       //echo_ifdebug(true, "is_readable(AVATAR_PATH)=");
-       //echo_ifdebug(true, is_readable($AVATAR_PATH));
-       
-       if (!is_readable($AVATAR_PATH)) {
-         mkdir($AVATAR_PATH, 0777); 
-       }
-       
-       if (!is_readable($destPath)) {
-         mkdir($destPath, 0777); 
-       }
-       
-       $pattern = $destPath . DIRECTORY_SEPARATOR . "*" . "|" . str_replace(" ", "_", $originalFilename) . ".$fileExt";
-       $aExistingPaths = glob($pattern);
-       if (!empty($aExistingPaths)) {
-         continue;
-       }
-       
-       copy($tmpFullPath, $destFullPath);
+          if (!is_readable($destPaths[$iPath])) {
+            mkdir($destPaths[$iPath], 0777); 
+          }
 
+          $pattern = $destPaths[$iPath] . DIRECTORY_SEPARATOR . "*" . "|" . str_replace(" ", "_", $originalFilename) . ".$fileExt";
+          $aExistingPaths = glob($pattern);
+          if (!empty($aExistingPaths)) {
+            continue;
+          }
+
+          copy($tmpFullPath, $destFullPath);
+
+          $iPath++;
+       }   
+          
        // Cleaning up..
       
        // Delete the tmp file..
@@ -351,6 +383,34 @@
     
   </div>  
 
+<div class="tools" style="position:fixed;top:12px;width:120px;height:620px;display:none;">
+<div class="settingson" style="float:left;width:120px;height:150px;border:0px solid black;background:url(/res/settingsoff.png);background-size:cover;cursor:pointer;display:none;" onclick="settingsOn();"></div>
+
+  <?PHP if ($magicJar1 == 0): ?>
+<div class="magicjar1" style="float:left;width:120px;height:120px;border:0px solid black;background:url(/res/magicjar1dis.png);background-size:120px 120px;cursor:pointer;" onclick="setJar1On()"></div>
+<?PHP else: ?>
+<div class="magicjar1" style="float:left;width:120px;height:120px;border:0px solid black;background:url(/res/magicjar1.png);background-size:120px 120px;cursor:pointer;" onclick="setJar1Off()"></div>
+<?PHP endif; ?>
+
+<?PHP if ($magicJar2 == 0): ?>
+<div class="magicjar2" style="float:left;width:120px;height:120px;border:0px solid black;background:url(/res/magicjar2dis.png);background-size:120px 120px;cursor:pointer;" onclick="setJar2On()"></div>
+<?PHP else: ?>
+<div class="magicjar2" style="float:left;width:120px;height:120px;border:0px solid black;background:url(/res/magicjar2.png);background-size:120px 120px;cursor:pointer;" onclick="setJar2Off()"></div>
+<?PHP endif; ?>
+
+<?PHP if ($magicJar3 == 0): ?>
+<div class="magicjar3" style="float:left;width:120px;height:120px;border:0px solid black;background:url(/res/magicjar3dis.png);background-size:120px 120px;cursor:pointer;" onclick="setJar3On()"></div>
+<?PHP else: ?>
+<div class="magicjar3" style="float:left;width:120px;height:120px;border:0px solid black;background:url(/res/magicjar3.png);background-size:120px 120px;cursor:pointer;" onclick="setJar3Off()"></div>
+<?PHP endif; ?>
+
+<div class="settingsoff" style="float:left;width:120px;height:150px;border:0px solid black;background:url(/res/settingson.png);background-size:cover;cursor:pointer;" onclick="settingsOff();"></div>
+</div>
+
+<input type="hidden" id="txtMagicJar1" name="txtMagicJar1" value="<?PHP echo($magicJar1);?>">
+<input type="hidden" id="txtMagicJar2" name="txtMagicJar2" value="<?PHP echo($magicJar2);?>">
+<input type="hidden" id="txtMagicJar3" name="txtMagicJar3" value="<?PHP echo($magicJar3);?>">
+    
  <input type="hidden" id="Password" name="Password" value="<?PHP echo($password);?>"> 
     
  </form>   
@@ -490,7 +550,114 @@
       </div>  
    </div> 
 
+  <?PHP
+   $pattern = $MAGICJAR1_PATH . DIRECTORY_SEPARATOR . "*";
+   $aFilePaths = glob($pattern);
+   
+   if (!empty($aFilePaths)): ?>
+  
+        <div id="magicjar1" style="float:left;margin:6%;margin-top:0px;margin-bottom:5px;width:90%;font-size:15px;font-family:Arial,Sans,Verdana;color:#000000;background:#f7ecb5;">    
+             <div class="magicjar1-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
+     
+               <div style="float:right;margin-right:2px;background:yellow;color:darkorange;">&nbsp;1&nbsp;</div>
+               
+                <?PHP
+      $iEntry = 1;          
+      foreach ($aFilePaths as $filePath) {
+        $orifilename = basename($filePath);
+        $filename = explode("|",basename($filePath))[1];
+        if ($iEntry === count($aFilePaths)) {
+          $marginbottom = "0px";
+        } else {
+          $marginbottom = "5px";
+        }
+        ?>
+                      <div class="file-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
+                        <a href="/file?av=<?PHP echo(AVATAR_NAME);?>&jar=1&fn=<?PHP echo($orifilename);?>">
+                        <div style="width:100%;border:0px solid black;"><img src="/res/fileicon.png" align="center" style="width:64px;border:0px solid gray;"></div>
+                        <div style="margin-top:10px;"><?PHP echo($filename);?> </div>
+                        </a>  
+                      </div> 
+                 <?PHP 
+       $iEntry++;          
+      }?>
+             </div>  
+        </div> 
+    
+       <?PHP endif; ?>
 
+  <?PHP
+   $pattern = $MAGICJAR2_PATH . DIRECTORY_SEPARATOR . "*";
+   $aFilePaths = glob($pattern);
+   
+   if (!empty($aFilePaths)): ?>
+  
+        <div id="magicjar2" style="float:left;margin:6%;margin-top:0px;margin-bottom:5px;width:90%;font-size:15px;font-family:Arial,Sans,Verdana;color:#000000;background:#f7ecb5;">    
+             <div class="magicjar2-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
+     
+               <div style="float:right;margin-right:2px;background:yellow;color:darkorange;">&nbsp;2&nbsp;</div>
+               
+                <?PHP
+      $iEntry = 1;          
+      foreach ($aFilePaths as $filePath) {
+        $orifilename = basename($filePath);
+        $filename = explode("|",basename($filePath))[1];
+        if ($iEntry === count($aFilePaths)) {
+          $marginbottom = "0px";
+        } else {
+          $marginbottom = "5px";
+        }
+        ?>
+                      <div class="file-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
+                        <a href="/file?av=<?PHP echo(AVATAR_NAME);?>&jar=2&fn=<?PHP echo($orifilename);?>">
+                        <div style="width:100%;border:0px solid black;"><img src="/res/fileicon.png" align="center" style="width:64px;border:0px solid gray;"></div>
+                        <div style="margin-top:10px;"><?PHP echo($filename);?> </div>
+                        </a>  
+                      </div> 
+                 <?PHP 
+       $iEntry++;          
+      }?>
+             </div>  
+        </div> 
+    
+       <?PHP endif; ?>
+
+  <?PHP
+   $pattern = $MAGICJAR3_PATH . DIRECTORY_SEPARATOR . "*";
+   $aFilePaths = glob($pattern);
+   
+   if (!empty($aFilePaths)): ?>
+  
+        <div id="magicjar3" style="float:left;margin:6%;margin-top:0px;margin-bottom:5px;width:90%;font-size:15px;font-family:Arial,Sans,Verdana;color:#000000;background:#f7ecb5;">    
+             <div class="magicjar3-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
+     
+               <div style="float:right;margin-right:2px;background:yellow;color:darkorange;">&nbsp;3&nbsp;</div>
+               
+                <?PHP
+      $iEntry = 1;          
+      foreach ($aFilePaths as $filePath) {
+        $orifilename = basename($filePath);
+        $filename = explode("|",basename($filePath))[1];
+        if ($iEntry === count($aFilePaths)) {
+          $marginbottom = "0px";
+        } else {
+          $marginbottom = "5px";
+        }
+        ?>
+                      <div class="file-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
+                        <a href="/file?av=<?PHP echo(AVATAR_NAME);?>&jar=3&fn=<?PHP echo($orifilename);?>">
+                        <div style="width:100%;border:0px solid black;"><img src="/res/fileicon.png" align="center" style="width:64px;border:0px solid gray;"></div>
+                        <div style="margin-top:10px;"><?PHP echo($filename);?> </div>
+                        </a>  
+                      </div> 
+                 <?PHP 
+       $iEntry++;          
+      }?>
+             </div>  
+        </div> 
+    
+       <?PHP endif; ?>
+    
  <div id="friends" style="float:left;margin:6%;margin-top:50px;width:90%;font-size:15px;font-family:Arial,Sans,Verdana;color:#000000;background:#dadada">    
    <div class="friends-content" style="width:100%;float:left;border:3px solid transparent;border-radius:4px;color:#000000;padding-top:10px;text-align:center;"> 
      
