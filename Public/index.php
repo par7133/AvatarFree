@@ -80,7 +80,7 @@ switch ($url) {
     
     $docPath = $REPO_PATH . DIRECTORY_SEPARATOR . $doc;
        
-    if (filesize($docPath) <= APP_DOC_MAX_SIZE) { 
+    if (filesize($docPath) <= APP_FILE_MAX_SIZE) { 
       switch ($fileExt) {
         case "doc":
           header("Content-Type: application/msword");
@@ -117,7 +117,7 @@ switch ($url) {
       $picPath = $GALLERY_PATH . DIRECTORY_SEPARATOR . $pic;
     }  
        
-    if (filesize($picPath) <= APP_IMAGE_MAX_SIZE) { 
+    if (filesize($picPath) <= APP_FILE_MAX_SIZE) { 
       header("Content-Type: image/" . $fileExt);
       echo(file_get_contents($picPath));
     } else {
@@ -125,6 +125,35 @@ switch ($url) {
     }  
     
     break;
+  case "file":
+    $avatar = filter_input(INPUT_GET, "av", FILTER_SANITIZE_STRING);
+    $jar = (int)substr(filter_input(INPUT_GET, "jar", FILTER_SANITIZE_STRING),0,1);
+    if ($jar >= 1 && $jar <= 3) {
+    } else {
+      die("jar parameter error.");
+    }
+    
+    $AVATAR_PATH = APP_DATA_PATH . DIRECTORY_SEPARATOR . $avatar;
+    $JAR_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "magicjar" . $jar;     
+
+    $fileName = filter_input(INPUT_GET, "fn", FILTER_SANITIZE_STRING);
+       
+    $originalFilename = pathinfo($fileName, PATHINFO_FILENAME);
+    $orioriFilename = explode("|", $originalFilename)[1];
+    $originalFileExt = pathinfo($fileName, PATHINFO_EXTENSION);
+    $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+    
+    $filePath = $JAR_PATH . DIRECTORY_SEPARATOR . $fileName;
+       
+    if (filesize($filePath) <= APP_FILE_MAX_SIZE) { 
+      header("Content-Type: unknown");
+      header("Content-Disposition: attachment; filename=" . $orioriFilename . ".$fileExt");
+      echo(file_get_contents($filePath));
+    } else {
+      die("file size over app limits.");
+    }  
+    
+    break;    
   default:
     define("SCRIPT_NAME", "home");
     define("SCRIPT_FILENAME", "home.php");   
