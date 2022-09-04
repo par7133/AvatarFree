@@ -28,6 +28,10 @@ Hope you can enjoy it and let us know about any feedback: <a href="mailto:info@a
 
 <br>
 
-###Screenshots:
+### Public view:
 
-![Avatar Free in action](/Public/res/screenshot1.png)<br>
+![Avatar Free in action #1](/Public/res/screenshot1.png)<br>
+
+### Admin view:
+
+![Avatar Free in action #2](/Public/res/screenshot2.png)<br>
