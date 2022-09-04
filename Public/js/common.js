@@ -25,6 +25,10 @@
  * @copyrights (c) 2021, 2024, 5 Mode 
  */
 
+function closeMe(tthis) {
+  $(tthis).parent().hide();
+}
+
 /**
  * Encrypt the given string
  * 
