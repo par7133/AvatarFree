@@ -488,9 +488,9 @@
  <div id="blog" style="height:fit-content;float:left;margin:6%;margin-top:130px;margin-bottom:5px;width:90%;font-size:15px;font-family:'Press Start 2P';color:#000000;">    
       <?PHP
    $pattern = $BLOG_PATH . DIRECTORY_SEPARATOR . "*.txt";
-   $aFilePaths = glob($pattern);
+   $aFilePaths = glob($pattern);   
    if (empty($aFilePaths)): ?>
-             <div class="blog-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
+            <div class="blog-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
               <div class="blog-entry" style="width:100%;margin-bottom:0px;min-height:120px;background:#FFFFFF;border:1px solid black;padding:30px;">  
                 <?PHP echo(getResource0("Hello from 5 Mode", $lang));?>,<br>
                 <?PHP echo(getResource0("This is just an example of blog entry", $lang));?>.
@@ -500,6 +500,7 @@
                 <?PHP
       $CUDOZ++;          
       $iEntry = 1;          
+      arsort($aFilePaths, SORT_STRING);
       foreach ($aFilePaths as $filePath) {
         $s=file_get_contents($filePath); 
         if ($iEntry === count($aFilePaths)) {
@@ -739,7 +740,7 @@
            
  <?PHP endif; ?>           
      
-<script src="/js/home-js.php?hl=<?PHP echo($lang);?>&av=<?PHP echo(AVATAR_NAME);?>&cv=<?PHP echo($CURRENT_VIEW);?>&cu=<?PHP echo($CUDOZ);?>" type="text/javascript"></script>
+<script src="static/js/home-js.php?hl=<?PHP echo($lang);?>&av=<?PHP echo(AVATAR_NAME);?>&cv=<?PHP echo($CURRENT_VIEW);?>&cu=<?PHP echo($CUDOZ);?>" type="text/javascript"></script>
 
 <?php if (file_exists(APP_PATH . DIRECTORY_SEPARATOR . "metrics.html")): ?>
 <?php include("../../Public/metrics.html"); ?> 
