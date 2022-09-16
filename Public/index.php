@@ -118,7 +118,11 @@ switch ($url) {
     }  
        
     if (filesize($picPath) <= APP_FILE_MAX_SIZE) { 
-      header("Content-Type: image/" . $fileExt);
+      if ($fileExt = "jpg") {
+        header("Content-Type: image/jpeg");
+      } else {
+        header("Content-Type: image/" . $fileExt);
+      }  
       echo(file_get_contents($picPath));
     } else {
       die("picture size over app limits.");
