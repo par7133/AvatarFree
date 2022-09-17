@@ -347,7 +347,7 @@
    
   <!--<?PHP echo(APP_LICENSE);?>-->  
   
-  <title>Avatar Free: everyone its social presence.</title>
+  <title><?PHP echo(APP_TITLE);?></title>
 
   <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -370,7 +370,7 @@
   
   <body style="background:url('/res/bg1.jpg') no-repeat; background-size: cover; background-attachment: fixed; background-position: center;">
 
-   <div style="width:100%;height:fit-content;position:fixed;background:yellow;color:darkorange;text-align:center;cursor:pointer;" onclick="showHowTo();"><br><?PHP echo(getResource0("How-to: Manage your avatars in Avatar Free", $lang));?><br><br></div> 
+   <div id="AFHint" style="width:100%;height:fit-content;position:fixed;background:yellow;color:darkorange;text-align:center;cursor:pointer;" onclick="showHowTo();"><br><?PHP echo(getResource0("How-to: Manage your avatars in Avatar Free", $lang));?><br><br></div> 
 
   <form id="frmUpload" role="form" method="post" action="/<?PHP echo(AVATAR_NAME);?>?hl=<?PHP echo($lang);?>" target="_self" enctype="multipart/form-data">  
     
@@ -421,7 +421,7 @@
 <?PHP else: ?>          
 
   <body style="background:#dadada no-repeat; background-size: cover; background-attachment: fixed; background-position: center;">
-   <div style="width:100%;height:fit-content;position:fixed;top:-5px;background:yellow;color:darkorange;text-align:center;cursor:pointer;z-index:99999;">
+   <div id="AFHint" style="width:100%;height:fit-content;position:fixed;top:-5px;background:yellow;color:darkorange;text-align:center;cursor:pointer;z-index:99999;">
         <button type="button" class="close" aria-label="Close" onclick="closeMe(this);" style="position:relative; top:5px; left:-7px;">
            <span aria-hidden="true" style="color:black; font-weight:900;">&times;</span>
        </button>
@@ -502,8 +502,11 @@
       $iEntry = 1;          
       arsort($aFilePaths, SORT_STRING);
       foreach ($aFilePaths as $filePath) {
+        if ($iEntry>APP_BLOG_MAX_POSTS) {
+          break;
+        }
         $s=file_get_contents($filePath); 
-        if ($iEntry === count($aFilePaths)) {
+        if ($iEntry === count($aFilePaths) || $iEntry==APP_BLOG_MAX_POSTS) {
           $marginbottom = "0px";
         } else {
           $marginbottom = "5px";
