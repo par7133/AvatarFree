@@ -514,7 +514,7 @@
         ?>
                           <div class="blog-content" style="margin-bottom:<?PHP echo($marginbottom);?>;width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
                            <div class="blog-entry" style="min-height:120px;background:#FFFFFF;border:1px solid black;padding:30px;">  
-                             <?PHP echo(HTMLencode($s, true));?>
+                             <?PHP echo(enableEmoticons(HTMLencode($s, true)));?>
                            </div> 
                           </div>   
                  <?PHP 
@@ -719,7 +719,7 @@
    </div> 
     
     
-  <div id="passworddisplay" style="float:left;position:fixed;top:680px;left:50px;width:255px;height:120px;background:darkgray;text-align:left;white-space:nowrap; font-family:'Bungee Hairline'; color:#000000; font-weight:900;z-index:99999;">
+  <div id="passworddisplay" style="float:left;position:fixed;top:680px;left:50px;width:255px;height:120px;background:darkgray;text-align:left;white-space:nowrap; font-family:Arial,Sans,Verdana; color:#000000; font-weight:900;z-index:99999;">
        <br>  
         &nbsp;&nbsp;<input type="password" id="Password" name="Password" placeholder="password" style="font-size:18px;  background:transparent; width: 60%; border-radius:3px; font-weight:900;" value="<?php echo($password);?>" autocomplete="off">&nbsp;<input type="submit" value="<?PHP echo(getResource0("Go", $lang));?>" style="text-align:left;width:25%;color:#000000;"><br>
         &nbsp;&nbsp;<input type="text" id="Salt" placeholder="salt" style="position:relative; top:+5px; font-size:18px; background:transparent; width: 90%; border-radius:3px; font-weight:900;" autocomplete="off"><br>
