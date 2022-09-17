@@ -31,6 +31,7 @@ define('ADMIN_VIEW', "1");
 define('PUBLIC_VIEW', "2");
  
 define('APP_NAME', "AvatarFree");
+define('APP_TITLE', "Avatar Free: everyone its social presence.");
 
 // password: your_password
 // salt: your_salt
@@ -70,6 +71,7 @@ LICENSETEXT
 define('APP_DEF_LANG', "en-US");
 define('APP_DEF_PROFILE_PIC', "/res/pic1.png");
 define('APP_FILE_MAX_SIZE', 496000);
+define('APP_BLOG_MAX_POSTS ', 20);
 
 $CONFIG = [
 
@@ -79,6 +81,7 @@ $CONFIG = [
  
    'APP' => [
       'NAME' => "AvatarFree",
+      'TITLE' => "Avatar Free: everyone its social presence.",
       // password: your_password
       // salt: your_salt
       'HASH' => "",
@@ -114,7 +117,8 @@ LICENSETEXT
              ,
       'DEF_LANG' => "en-US",
       'DEF_PROFILE_PIC' => "/res/pic1.png", 
-      'FILE_MAX_SIZE' => 496000 
+      'FILE_MAX_SIZE' => 496000,
+      'BLOG_MAX_POSTS ' => 20 
       ]
     
     ];  
