@@ -25,6 +25,23 @@
  * @copyrights (c) 2016, 2024, 5 Mode
  */
 
+if (!function_exists("enableEmoticons")) { 
+/**
+ * Enable the emoticons of the given text
+ * 
+ * @param string $text the text being parsed for emoticons
+ * @return the text with enabled emoticons
+ */
+function enableEmoticons(string $text): string
+{ 
+  global $EMOTICONS;
+  
+  if ($EMOTICONS) {
+    return str_ireplace(array_keys($EMOTICONS),array_values($EMOTICONS), $text);
+  }  
+}  
+}
+
 if (!function_exists("getResource0")) { 
 /**
  * Get a resource translated 
