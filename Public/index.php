@@ -129,6 +129,39 @@ switch ($url) {
     }  
     
     break;
+  case "imgj":
+    $avatar = filter_input(INPUT_GET, "av", FILTER_SANITIZE_STRING);
+    $jar = (int)substr(filter_input(INPUT_GET, "jar", FILTER_SANITIZE_STRING),0,1);
+    if ($jar >= 1 && $jar <= 3) {
+    } else {
+      die("jar parameter error.");
+    }
+    
+    $AVATAR_PATH = APP_DATA_PATH . DIRECTORY_SEPARATOR . $avatar;
+    $JAR_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "magicjar" . $jar;     
+
+    $fileName = filter_input(INPUT_GET, "fn", FILTER_SANITIZE_STRING);
+       
+    $originalFilename = pathinfo($fileName, PATHINFO_FILENAME);
+    $orioriFilename = explode("|", $originalFilename)[1];
+    $originalFileExt = pathinfo($fileName, PATHINFO_EXTENSION);
+    $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+    
+    $filePath = $JAR_PATH . DIRECTORY_SEPARATOR . $fileName;
+       
+    if (filesize($filePath) <= APP_FILE_MAX_SIZE) { 
+      if ($fileExt = "jpg") {
+        header("Content-Type: image/jpeg");
+      } else {
+        header("Content-Type: image/" . $fileExt);
+      }  
+      header("Content-Disposition: attachment; filename=" . $orioriFilename . ".$fileExt");
+      echo(file_get_contents($filePath));
+    } else {
+      die("file size over app limits.");
+    }  
+    
+    break;    
   case "file":
     $avatar = filter_input(INPUT_GET, "av", FILTER_SANITIZE_STRING);
     $jar = (int)substr(filter_input(INPUT_GET, "jar", FILTER_SANITIZE_STRING),0,1);
