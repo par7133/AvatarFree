@@ -578,6 +578,7 @@
       $iEntry = 1;          
       foreach ($aFilePaths as $filePath) {
         $orifilename = basename($filePath);
+        $orifileExt = strtolower(pathinfo($orifilename, PATHINFO_EXTENSION));
         $filename = explode("|",basename($filePath))[1];
         if ($iEntry === count($aFilePaths)) {
           $marginbottom = "0px";
@@ -586,7 +587,11 @@
         }
         ?>
                       <div class="file-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
+                        <?PHP if (in_array($orifileExt, ["png", "jpg", "jpeg", "gif", "webp"])):?>                   
+                        <a href="/imgj?av=<?PHP echo(AVATAR_NAME);?>&jar=1&fn=<?PHP echo($orifilename);?>">
+                        <?PHP else: ?>  
                         <a href="/file?av=<?PHP echo(AVATAR_NAME);?>&jar=1&fn=<?PHP echo($orifilename);?>">
+                        <?PHP endif; ?>  
                         <div style="width:100%;border:0px solid black;"><img src="/res/fileicon.png" align="center" style="width:64px;border:0px solid gray;"></div>
                         <div style="margin-top:10px;"><?PHP echo($filename);?> </div>
                         </a>  
@@ -614,6 +619,7 @@
       $iEntry = 1;          
       foreach ($aFilePaths as $filePath) {
         $orifilename = basename($filePath);
+        $orifileExt = strtolower(pathinfo($orifilename, PATHINFO_EXTENSION));
         $filename = explode("|",basename($filePath))[1];
         if ($iEntry === count($aFilePaths)) {
           $marginbottom = "0px";
@@ -622,8 +628,12 @@
         }
         ?>
                       <div class="file-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
-                        <a href="/file?av=<?PHP echo(AVATAR_NAME);?>&jar=2&fn=<?PHP echo($orifilename);?>">
-                        <div style="width:100%;border:0px solid black;"><img src="/res/fileicon.png" align="center" style="width:64px;border:0px solid gray;"></div>
+                        <?PHP if (in_array($orifileExt, ["png", "jpg", "jpeg", "gif", "webp"])):?>                   
+                            <a href="/imgj?av=<?PHP echo(AVATAR_NAME);?>&jar=2&fn=<?PHP echo($orifilename);?>">
+                        <?PHP else: ?>  
+                            <a href="/file?av=<?PHP echo(AVATAR_NAME);?>&jar=2&fn=<?PHP echo($orifilename);?>">
+                        <?PHP endif; ?> 
+                       <div style="width:100%;border:0px solid black;"><img src="/res/fileicon.png" align="center" style="width:64px;border:0px solid gray;"></div>
                         <div style="margin-top:10px;"><?PHP echo($filename);?> </div>
                         </a>  
                       </div> 
@@ -650,6 +660,7 @@
       $iEntry = 1;          
       foreach ($aFilePaths as $filePath) {
         $orifilename = basename($filePath);
+        $orifileExt = strtolower(pathinfo($orifilename, PATHINFO_EXTENSION));
         $filename = explode("|",basename($filePath))[1];
         if ($iEntry === count($aFilePaths)) {
           $marginbottom = "0px";
@@ -658,7 +669,11 @@
         }
         ?>
                       <div class="file-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
-                        <a href="/file?av=<?PHP echo(AVATAR_NAME);?>&jar=3&fn=<?PHP echo($orifilename);?>">
+                       <?PHP if (in_array($orifileExt, ["png", "jpg", "jpeg", "gif", "webp"])):?>                   
+                          <a href="/imgj?av=<?PHP echo(AVATAR_NAME);?>&jar=3&fn=<?PHP echo($orifilename);?>">
+                       <?PHP else: ?>  
+                          <a href="/file?av=<?PHP echo(AVATAR_NAME);?>&jar=3&fn=<?PHP echo($orifilename);?>">
+                       <?PHP endif; ?> 
                         <div style="width:100%;border:0px solid black;"><img src="/res/fileicon.png" align="center" style="width:64px;border:0px solid gray;"></div>
                         <div style="margin-top:10px;"><?PHP echo($filename);?> </div>
                         </a>  
