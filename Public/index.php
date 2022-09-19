@@ -155,7 +155,7 @@ switch ($url) {
       } else {
         header("Content-Type: image/" . $fileExt);
       }  
-      header("Content-Disposition: attachment; filename=" . $orioriFilename . ".$fileExt");
+      //header("Content-Disposition: attachment; filename=" . $orioriFilename . ".$fileExt");
       echo(file_get_contents($filePath));
     } else {
       die("file size over app limits.");
