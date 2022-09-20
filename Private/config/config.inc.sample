@@ -71,7 +71,7 @@ LICENSETEXT
 define('APP_DEF_LANG', "en-US");
 define('APP_DEF_PROFILE_PIC', "/res/pic1.png");
 define('APP_FILE_MAX_SIZE', 496000);
-define('APP_BLOG_MAX_POSTS ', 20);
+define('APP_BLOG_MAX_POSTS', 20);
 
 $CONFIG = [
 
@@ -118,7 +118,7 @@ LICENSETEXT
       'DEF_LANG' => "en-US",
       'DEF_PROFILE_PIC' => "/res/pic1.png", 
       'FILE_MAX_SIZE' => 496000,
-      'BLOG_MAX_POSTS ' => 20 
+      'BLOG_MAX_POSTS' => 20 
       ]
     
     ];  
