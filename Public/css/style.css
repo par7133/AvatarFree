@@ -48,7 +48,55 @@ body {
   cursor: pointer; 
 }
 #AFHint {
+  width:100%;
+  height:fit-content;
+  position:fixed;
+  top:-5px;
+  background:yellow;
+  color:darkorange;
+  text-align:center;
+  cursor:pointer;
   display:inline;
+  z-index:99999;
+}
+#avatarLogo {
+  float:left;
+  width:255px;
+  height:255px;
+}
+#avatarName {
+  width:250px;
+  height:255px;
+  padding-top:122px;
+  float:left;
+  border:0px solid yellow;
+  vertical-align:middle;
+}
+#blog {
+  height:fit-content;
+  float:left;
+  margin:6%;
+  margin-top:130px;
+  margin-bottom:5px;
+  width:90%;
+  font-size:15px;
+  font-family:'Press Start 2P';
+  color:#000000;
+}
+.blog-content {
+  width:100%;
+  float:left;
+  border:3px solid darkgray;
+  border-radius:4px;
+  color:#000000;
+}
+.blog-entry {
+  width:100%;
+  margin-bottom:0px;
+  min-height:120px;
+  background:#FFFFFF;
+  border:1px solid black;
+  padding:30px;
 }
 .buttondisplaylist {
   float:right; 
@@ -57,6 +105,39 @@ body {
   top:+2px; 
   background-color:transparent; 
   border:0px;
+}
+#cbLang {
+  margin-left:22px;
+  font-size:10px;
+}
+#cudoz {
+  width:250px;
+  height:255px;
+  padding-top:116px;
+  float:left;border:0px solid green;
+  vertical-align:middle;
+}
+.cudoz-entry {
+  float:left;
+  width:46px
+}
+.cv-entry {
+  float:left;
+  width:64px
+}
+#cvs {
+  float:right;
+  border:3px solid darkgray;
+  border-radius:4px;
+  padding:4px;
+  background:#dadada;
+  font-size:20px;
+  font-family:'Press Start 2P';
+  font-weight:900;
+}
+.dragover {
+  width:100%;
+  height:100%;
 }
 .element {
   width:80%; 
@@ -104,6 +185,19 @@ body {
   background-color:lightgray;
   color:#FFFFFF;
 }
+.file-entry {
+  height:fit-content;
+  min-height:120px;
+  float:left;
+  width:fit-content;
+  border:0px solid green;
+  padding:10px;
+  text-align:center;
+}
+.file-ico {
+  width:64px;
+  border:0px solid gray;
+}
 #fileList {
   position:absolute; 
   top:-0px; 
@@ -142,6 +236,83 @@ body {
   font-weight: 400;
   text-align: right; 
   z-index: 99999;
+}
+#friends {
+  float:left;
+  margin:6%;
+  margin-top:50px;
+  width:90%;
+  font-size:15px;
+  font-family:Arial,Sans,Verdana;
+  color:#000000;
+  background:#dadada
+}
+.friends-content {
+  width:100%;
+  float:left;
+  border:3px solid transparent;
+  border-radius:4px;
+  color:#000000;
+  padding-top:10px;
+  text-align:center;
+}
+.friend-entry {
+  height:fit-content;
+  min-height:120px;
+  float:left;
+  width:fit-content;
+  border:0px solid green;
+  padding:10px;
+  text-align:center;
+}
+.friend-ico {
+  width:64px;
+  border:0px solid gray;
+}
+#gallery {
+  float:left;
+  margin:6%;
+  margin-top:0px;
+  margin-bottom:5px;
+  width:90%;
+  font-size:15px;
+  font-family:Arial,Sans,Verdana;
+  color:#000000;
+  background:#C2DBF2;
+}
+.gallery-content {
+  width:100%;
+  float:left;
+  border:3px solid darkgray;
+  border-radius:4px;
+  color:#000000;
+}
+#hashMe {
+  position:relative; 
+  left:-2px; 
+  top:+5px; 
+  font-size:18px; 
+  font-weight:900; 
+  color:#000000;
+}
+.image-entry {
+  height:fit-content;
+  min-height:120px;
+  float:left;
+  width:fit-content;
+  border:0px solid green;
+  padding:10px;
+  text-align:center;
+}
+.image-ico {
+  width:64px;
+  border:1px solid gray;
+}
+#mynetworkTitle {
+  font-family:'Press Start 2P';
+  width:fit-content;
+  margin:auto;
+  color:#245269;
 }
 #notBoughties {
   display:none;
@@ -269,6 +440,88 @@ body {
   padding-top:20px;
   padding-bottom:50px;
 }
+#magicjar1 {
+  float:left;
+  margin:6%;
+  margin-top:0px;
+  margin-bottom:5px;
+  width:90%;
+  font-size:15px;
+  font-family:Arial,Sans,Verdana;
+  color:#000000;
+  background:#f7ecb5;
+}
+.magicjar1 {
+  float:left;
+  width:120px;
+  height:120px;
+  background-size:120px 120px;
+  cursor:pointer;
+}
+.magicjar1-content {
+  width:100%;
+  float:left;
+  border:3px solid darkgray;
+  border-radius:4px;
+  color:#000000;
+}
+.magicjar2 {
+  float:left;
+  width:120px;
+  height:120px;
+  background-size:120px 120px;
+  cursor:pointer;
+}
+#magicjar2 {
+  float:left;
+  margin:6%;
+  margin-top:0px;
+  margin-bottom:5px;
+  width:90%;
+  font-size:15px;
+  font-family:Arial,Sans,Verdana;
+  color:#000000;
+  background:#f7ecb5;
+}
+.magicjar2-content {
+  width:100%;
+  float:left;
+  border:3px solid darkgray;
+  border-radius:4px;
+  color:#000000;
+}
+.magicjar3 {
+  float:left;
+  width:120px;
+  height:120px;
+  background-size:120px 120px;
+  cursor:pointer;
+}
+#magicjar3 {
+  float:left;
+  margin:6%;
+  margin-top:0px;
+  margin-bottom:5px;
+  width:90%;
+  font-size:15px;
+  font-family:Arial,Sans,Verdana;
+  color:#000000;
+  background:#f7ecb5;
+}
+.magicjar3-content {
+  width:100%;
+  float:left;
+  border:3px solid darkgray;
+  border-radius:4px;
+  color:#000000;
+}
+.magicjar-num {
+  float:right;
+  margin-left:99.9%;
+  margin-right:2px;
+  background:yellow;
+  color:darkorange;
+}
 .no-drop {
   cursor: not-allowed;
 }  
@@ -292,6 +545,35 @@ body {
   position:relative;
   top:-60px;
   /*color:#5e383a;*/
+}
+#Password {
+  font-size:18px;  
+  background:transparent; 
+  width: 60%; 
+  border-radius:3px; 
+  font-weight:900;
+}
+#passworddisplay {
+  float:left;
+  position:fixed;
+  top:680px;
+  left:50px;
+  width:255px;
+  height:120px;
+  background:darkgray;
+  text-align:left;
+  white-space:nowrap; 
+  font-family:Arial,Sans,Verdana; 
+  color:#000000; 
+  font-weight:900;
+  z-index:99999;
+}
+#picavatar {
+  position:absolute;
+  width:255px;
+  height:255px;
+  border-radius: 90%; 
+  display:none;
 }
 .prodel {
   text-align:left;
@@ -334,6 +616,44 @@ body {
 #results {
   display: none;
 }
+#Salt {
+  position:relative; 
+  top:+5px; 
+  font-size:18px; 
+  background:transparent;
+  width: 90%; 
+  border-radius:3px; 
+  font-weight:900;
+}
+.settingson {
+  float:left;
+  width:120px;
+  height:150px;
+  border:0px solid black;
+  background:url(/res/settingsoff.png);
+  background-size:cover;
+  cursor:pointer;
+  display:none;
+}
+.settingsoff {
+  float:left;
+  width:120px;
+  height:150px;
+  border:0px solid black;
+  background:url(/res/settingson.png);
+  background-size:cover;
+  cursor:pointer;
+}
+#title {
+  position:relative;
+  top:20px;
+  left:50px;
+  width:100%;
+  float:left;
+  font-size:25px;
+  font-family:'Press Start 2P';
+  border:0px solid blue;
+}
 .titlelane {
   text-align:left;
   margin-bottom:8px;
@@ -369,4 +689,11 @@ body {
 }
 .titlelanedarkgreen {
   color: darkgreen;
+}
+.tools {
+  position:fixed;
+  top:12px;
+  width:120px;
+  height:620px;
+  display:none;
 }
