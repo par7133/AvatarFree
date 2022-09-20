@@ -572,7 +572,7 @@
         <div id="magicjar1" style="float:left;margin:6%;margin-top:0px;margin-bottom:5px;width:90%;font-size:15px;font-family:Arial,Sans,Verdana;color:#000000;background:#f7ecb5;">    
              <div class="magicjar1-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
      
-               <div style="float:right;margin-right:2px;background:yellow;color:darkorange;">&nbsp;1&nbsp;</div>
+               <div style="float:right;margin-left:99.9%;margin-right:2px;background:yellow;color:darkorange;">&nbsp;1&nbsp;</div>
                
                 <?PHP
       $iEntry = 1;          
@@ -613,7 +613,7 @@
         <div id="magicjar2" style="float:left;margin:6%;margin-top:0px;margin-bottom:5px;width:90%;font-size:15px;font-family:Arial,Sans,Verdana;color:#000000;background:#f7ecb5;">    
              <div class="magicjar2-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
      
-               <div style="float:right;margin-right:2px;background:yellow;color:darkorange;">&nbsp;2&nbsp;</div>
+               <div style="float:right;margin-left:99.9%;margin-right:2px;background:yellow;color:darkorange;">&nbsp;2&nbsp;</div>
                
                 <?PHP
       $iEntry = 1;          
@@ -654,7 +654,7 @@
         <div id="magicjar3" style="float:left;margin:6%;margin-top:0px;margin-bottom:5px;width:90%;font-size:15px;font-family:Arial,Sans,Verdana;color:#000000;background:#f7ecb5;">    
              <div class="magicjar3-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
      
-               <div style="float:right;margin-right:2px;background:yellow;color:darkorange;">&nbsp;3&nbsp;</div>
+               <div style="float:right;margin-left:99.9%;margin-right:2px;background:yellow;color:darkorange;">&nbsp;3&nbsp;</div>
                
                 <?PHP
       $iEntry = 1;          
