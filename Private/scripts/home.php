@@ -369,42 +369,48 @@
 <?PHP if ($CURRENT_VIEW == ADMIN_VIEW): ?>    
   
   <body style="background:url('/res/bg1.jpg') no-repeat; background-size: cover; background-attachment: fixed; background-position: center;">
-
-   <div id="AFHint" style="width:100%;height:fit-content;position:fixed;background:yellow;color:darkorange;text-align:center;cursor:pointer;" onclick="showHowTo();"><br><?PHP echo(getResource0("How-to: Manage your avatars in Avatar Free", $lang));?><br><br></div> 
+   <div id="AFHint" style="z-index:0;">
+        <button type="button" class="close" aria-label="Close" onclick="closeMe(this);" style="position:relative; top:5px; left:-7px;">
+           <span aria-hidden="true" style="color:black; font-weight:900;">&times;</span>
+       </button>
+       <br>  
+      <span onclick="showHowTo();"><?PHP echo(getResource0("How-to: Manage your avatars in Avatar Free", $lang));?></span>
+      <br><br>
+   </div>     
 
   <form id="frmUpload" role="form" method="post" action="/<?PHP echo(AVATAR_NAME);?>?hl=<?PHP echo($lang);?>" target="_self" enctype="multipart/form-data">  
     
-  <div class="dragover" style="width:100%;height:100%;border:0px solid red;" dropzone="copy">  
+  <div class="dragover" dropzone="copy">  
     
-    <img id="picavatar" src="/img?av=<?PHP echo(AVATAR_NAME);?>&pic=<?PHP echo($profilePic);?>" align="middle" style="position:absolute;width:255px;height:255px;border-radius: 90%; display:none;">  
+    <img id="picavatar" src="/img?av=<?PHP echo(AVATAR_NAME);?>&pic=<?PHP echo($profilePic);?>" align="middle">  
   
     <input type="hidden" id="a" name="a">    
     <input type="hidden" id="f" name="f">  
     
   </div>  
 
-<div class="tools" style="position:fixed;top:12px;width:120px;height:620px;display:none;">
-<div class="settingson" style="float:left;width:120px;height:150px;border:0px solid black;background:url(/res/settingsoff.png);background-size:cover;cursor:pointer;display:none;" onclick="settingsOn();"></div>
+<div class="tools">
+<div class="settingson" onclick="settingsOn();"></div>
 
   <?PHP if ($magicJar1 == 0): ?>
-<div class="magicjar1" style="float:left;width:120px;height:120px;border:0px solid black;background:url(/res/magicjar1dis.png);background-size:120px 120px;cursor:pointer;" onclick="setJar1On()"></div>
+<div class="magicjar1" style="background:url(/res/magicjar1dis.png);" onclick="setJar1On()"></div>
 <?PHP else: ?>
-<div class="magicjar1" style="float:left;width:120px;height:120px;border:0px solid black;background:url(/res/magicjar1.png);background-size:120px 120px;cursor:pointer;" onclick="setJar1Off()"></div>
+<div class="magicjar1" style="background:url(/res/magicjar1.png);" onclick="setJar1Off()"></div>
 <?PHP endif; ?>
 
 <?PHP if ($magicJar2 == 0): ?>
-<div class="magicjar2" style="float:left;width:120px;height:120px;border:0px solid black;background:url(/res/magicjar2dis.png);background-size:120px 120px;cursor:pointer;" onclick="setJar2On()"></div>
+<div class="magicjar2" style="background:url(/res/magicjar2dis.png);" onclick="setJar2On()"></div>
 <?PHP else: ?>
-<div class="magicjar2" style="float:left;width:120px;height:120px;border:0px solid black;background:url(/res/magicjar2.png);background-size:120px 120px;cursor:pointer;" onclick="setJar2Off()"></div>
+<div class="magicjar2" style="background:url(/res/magicjar2.png);" onclick="setJar2Off()"></div>
 <?PHP endif; ?>
 
 <?PHP if ($magicJar3 == 0): ?>
-<div class="magicjar3" style="float:left;width:120px;height:120px;border:0px solid black;background:url(/res/magicjar3dis.png);background-size:120px 120px;cursor:pointer;" onclick="setJar3On()"></div>
+<div class="magicjar3" style="background:url(/res/magicjar3dis.png);" onclick="setJar3On()"></div>
 <?PHP else: ?>
-<div class="magicjar3" style="float:left;width:120px;height:120px;border:0px solid black;background:url(/res/magicjar3.png);background-size:120px 120px;cursor:pointer;" onclick="setJar3Off()"></div>
+<div class="magicjar3" style="background:url(/res/magicjar3.png);" onclick="setJar3Off()"></div>
 <?PHP endif; ?>
 
-<div class="settingsoff" style="float:left;width:120px;height:150px;border:0px solid black;background:url(/res/settingson.png);background-size:cover;cursor:pointer;" onclick="settingsOff();"></div>
+<div class="settingsoff" onclick="settingsOff();"></div>
 </div>
 
 <input type="hidden" id="txtMagicJar1" name="txtMagicJar1" value="<?PHP echo($magicJar1);?>">
@@ -421,7 +427,7 @@
 <?PHP else: ?>          
 
   <body style="background:#dadada no-repeat; background-size: cover; background-attachment: fixed; background-position: center;">
-   <div id="AFHint" style="width:100%;height:fit-content;position:fixed;top:-5px;background:yellow;color:darkorange;text-align:center;cursor:pointer;z-index:99999;">
+   <div id="AFHint">
         <button type="button" class="close" aria-label="Close" onclick="closeMe(this);" style="position:relative; top:5px; left:-7px;">
            <span aria-hidden="true" style="color:black; font-weight:900;">&times;</span>
        </button>
@@ -435,23 +441,23 @@
     
    <form id="frmUpload" role="form" method="post" action="/<?PHP echo(AVATAR_NAME);?>?hl=<?PHP echo($lang);?>" target="_self" enctype="multipart/form-data">  
    
-   <div id="title" style="position:relative;top:20px;left:50px;width:100%;float:left;font-size:25px;font-family:'Press Start 2P';border:0px solid blue;"> 
-        <div id="avatarLogo" style="width:255px;height:255px;float:left;border:0px solid yellow;">
-            <img id="picavatar" src="/img?av=<?PHP echo(AVATAR_NAME);?>&pic=<?PHP echo($profilePic);?>" align="middle" style="width:255px;height:255px;border-radius: 90%;">
+   <div id="title"> 
+        <div id="avatarLogo">
+            <img id="picavatar" src="/img?av=<?PHP echo(AVATAR_NAME);?>&pic=<?PHP echo($profilePic);?>" align="middle" style="position:relative;display:inline;">
         </div>  
-        <div id="avatarName" style="width:250px;height:255px;padding-top:122px;float:left;border:0px solid yellow;vertical-align:middle;">
+        <div id="avatarName">
           &nbsp;<?PHP echo(strtoupper(AVATAR_NAME));?>&nbsp;&nbsp;&nbsp;
         </div>  
-        <div id="cudoz" style="width:250px;height:255px;padding-top:116px;float:left;border:0px solid green;vertical-align:middle;">
+        <div id="cudoz">
         <?PHP for ($i=1;$i<=$CUDOZ;$i++): ?>
-             <img id="cudozentry<?PHP echo($i);?>" class="cudoz-entry" src="/res/chicca_<?PHP echo($shortLang);?>.png" style="float:left;width:46px">    
+             <img id="cudozentry<?PHP echo($i);?>" class="cudoz-entry" src="/res/chicca_<?PHP echo($shortLang);?>.png">    
         <?PHP endfor; ?>
         <?PHP for ($i=$CUDOZ+1;$i<=5;$i++): ?>
-             <img id="cudozentry<?PHP echo($i);?>" class="cudoz-entry" src="/res/chiccadis.png" style="float:left;width:46px">    
+             <img id="cudozentry<?PHP echo($i);?>" class="cudoz-entry" src="/res/chiccadis.png">    
         <?PHP endfor; ?>               
          </div> 
 
-        <div id="cvs" style="float:right;border:3px solid darkgray;border-radius:4px;padding:4px;background:#dadada;font-size:20px;font-family:'Press Start 2P';font-weight:900;">  
+        <div id="cvs">  
           
                    <div style="float:left;width:47px;margin-top:20px;margin-left:7px;"><?PHP echo(getResource0("CV", $lang));?></div>
           
@@ -459,24 +465,24 @@
        $pattern = $CV_PATH . DIRECTORY_SEPARATOR . "*";
        $aFilePaths = glob($pattern);
        if (empty($aFilePaths)): ?>
-                  <img src="/res/wordicondis.png" style="float:left;width:64px">&nbsp;&nbsp;<img src="/res/pdficondis.png" style="float:left;width:64px">
+                  <img class="cv-entry" src="/res/wordicondis.png">&nbsp;&nbsp;<img class="cv-entry" src="/res/pdficondis.png">
             <?PHP else: ?>
                     <?PHP
          $CUDOZ++;
          $pattern = $CV_PATH . DIRECTORY_SEPARATOR . "*.doc";
          $aFilePaths = glob($pattern);
          if (empty($aFilePaths)): ?>
-                       <img src="/res/wordicondis.png" style="float:left;width:64px">&nbsp;&nbsp;
+                       <img class="cv-entry" src="/res/wordicondis.png">&nbsp;&nbsp;
                       <?PHP else: ?>
-                       <a href="/doc?av=<?PHP echo(AVATAR_NAME);?>&re=cv&doc=<?PHP echo(basename($aFilePaths[0]));?>"><img src="/res/wordicon.png" style="float:left;width:64px"></a>&nbsp;&nbsp;
+                       <a href="/doc?av=<?PHP echo(AVATAR_NAME);?>&re=cv&doc=<?PHP echo(basename($aFilePaths[0]));?>"><img class="cv-entry" src="/res/wordicon.png"></a>&nbsp;&nbsp;
                       <?PHP endif; ?>
                     <?PHP
          $pattern = $CV_PATH . DIRECTORY_SEPARATOR . "*.pdf";
          $aFilePaths = glob($pattern);
          if (empty($aFilePaths)): ?>
-                        <img src="/res/pdficondis.png" style="float:left;width:64px">
+                        <img class="cv-entry" src="/res/pdficondis.png">
                         <?PHP else: ?>
-                        <a href="/doc?av=<?PHP echo(AVATAR_NAME);?>&re=cv&doc=<?PHP echo(basename($aFilePaths[0]));?>"><img src="/res/pdficon.png" style="float:left;width:64px"></a>
+                        <a href="/doc?av=<?PHP echo(AVATAR_NAME);?>&re=cv&doc=<?PHP echo(basename($aFilePaths[0]));?>"><img class="cv-entry" src="/res/pdficon.png"></a>
                       <?PHP endif; ?>
             <?PHP endif; ?>
        </div>  
@@ -485,13 +491,13 @@
   <br>
      
     
- <div id="blog" style="height:fit-content;float:left;margin:6%;margin-top:130px;margin-bottom:5px;width:90%;font-size:15px;font-family:'Press Start 2P';color:#000000;">    
+ <div id="blog">    
       <?PHP
    $pattern = $BLOG_PATH . DIRECTORY_SEPARATOR . "*.txt";
    $aFilePaths = glob($pattern);   
    if (empty($aFilePaths)): ?>
-            <div class="blog-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
-              <div class="blog-entry" style="width:100%;margin-bottom:0px;min-height:120px;background:#FFFFFF;border:1px solid black;padding:30px;">  
+            <div class="blog-content"> 
+              <div class="blog-entry">  
                 <?PHP echo(getResource0("Hello from 5 Mode", $lang));?>,<br>
                 <?PHP echo(getResource0("This is just an example of blog entry", $lang));?>.
               </div> 
@@ -512,8 +518,8 @@
           $marginbottom = "5px";
         }
         ?>
-                          <div class="blog-content" style="margin-bottom:<?PHP echo($marginbottom);?>;width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
-                           <div class="blog-entry" style="min-height:120px;background:#FFFFFF;border:1px solid black;padding:30px;">  
+                          <div class="blog-content" style="margin-bottom:<?PHP echo($marginbottom);?>;"> 
+                           <div class="blog-entry" style="width:100%;margin-bottom:0px;">  
                              <?PHP echo(enableEmoticons(HTMLencode($s, true)));?>
                            </div> 
                           </div>   
@@ -523,16 +529,16 @@
         <?PHP endif; ?>
    </div> 
 
- <div id="gallery" style="float:left;margin:6%;margin-top:0px;margin-bottom:5px;width:90%;font-size:15px;font-family:Arial,Sans,Verdana;color:#000000;background:#C2DBF2;">    
-   <div class="gallery-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
+ <div id="gallery">    
+   <div class="gallery-content"> 
      
       <?PHP
    $pattern = $GALLERY_PATH . DIRECTORY_SEPARATOR . "*";
    $aFilePaths = glob($pattern);
    if (empty($aFilePaths)): ?>
              
-              <div class="image-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
-                  <div style="width:100%;border:0px solid black;"><img src="/res/imgicon.png" align="center" style="width:64px;border:1px solid gray;"></div>
+              <div class="image-entry">  
+                  <div style="width:100%;border:0px solid black;"><img class="image-ico" src="/res/imgicon.png" align="center"></div>
                   <div style="margin-top:10px;"><?PHP echo(getResource0("Sample", $lang));?></div>
               </div> 
              
@@ -549,9 +555,9 @@
           $marginbottom = "5px";
         }
         ?>
-                      <div class="image-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
+                      <div class="image-entry">  
                         <a href="/img?av=<?PHP echo(AVATAR_NAME);?>&pic=<?PHP echo($orifilename);?>">
-                        <div style="width:100%;border:0px solid black;"><img src="/res/imgicon.png" align="center" style="width:64px;border:1px solid gray;"></div>
+                        <div style="width:100%;border:0px solid black;"><img class="image-ico" src="/res/imgicon.png" align="center"></div>
                         <div style="margin-top:10px;"><?PHP echo($filename);?> </div>
                         </a>  
                       </div> 
@@ -569,10 +575,10 @@
    
    if (!empty($aFilePaths)): ?>
   
-        <div id="magicjar1" style="float:left;margin:6%;margin-top:0px;margin-bottom:5px;width:90%;font-size:15px;font-family:Arial,Sans,Verdana;color:#000000;background:#f7ecb5;">    
-             <div class="magicjar1-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
+        <div id="magicjar1">    
+             <div class="magicjar1-content"> 
      
-               <div style="float:right;margin-left:99.9%;margin-right:2px;background:yellow;color:darkorange;">&nbsp;1&nbsp;</div>
+               <div class="magicjar-num">&nbsp;1&nbsp;</div>
                
                 <?PHP
       $iEntry = 1;          
@@ -586,13 +592,13 @@
           $marginbottom = "5px";
         }
         ?>
-                      <div class="file-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
+                      <div class="file-entry">  
                         <?PHP if (in_array($orifileExt, ["png", "jpg", "jpeg", "gif", "webp"])):?>                   
                         <a href="/imgj?av=<?PHP echo(AVATAR_NAME);?>&jar=1&fn=<?PHP echo($orifilename);?>">
                         <?PHP else: ?>  
                         <a href="/file?av=<?PHP echo(AVATAR_NAME);?>&jar=1&fn=<?PHP echo($orifilename);?>">
                         <?PHP endif; ?>  
-                        <div style="width:100%;border:0px solid black;"><img src="/res/fileicon.png" align="center" style="width:64px;border:0px solid gray;"></div>
+                        <div style="width:100%;border:0px solid black;"><img class="file-ico" src="/res/fileicon.png" align="center"></div>
                         <div style="margin-top:10px;"><?PHP echo($filename);?> </div>
                         </a>  
                       </div> 
@@ -610,10 +616,10 @@
    
    if (!empty($aFilePaths)): ?>
   
-        <div id="magicjar2" style="float:left;margin:6%;margin-top:0px;margin-bottom:5px;width:90%;font-size:15px;font-family:Arial,Sans,Verdana;color:#000000;background:#f7ecb5;">    
-             <div class="magicjar2-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
+        <div id="magicjar2">    
+             <div class="magicjar2-content"> 
      
-               <div style="float:right;margin-left:99.9%;margin-right:2px;background:yellow;color:darkorange;">&nbsp;2&nbsp;</div>
+               <div class="magicjar-num">&nbsp;2&nbsp;</div>
                
                 <?PHP
       $iEntry = 1;          
@@ -627,13 +633,13 @@
           $marginbottom = "5px";
         }
         ?>
-                      <div class="file-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
+                      <div class="file-entry">  
                         <?PHP if (in_array($orifileExt, ["png", "jpg", "jpeg", "gif", "webp"])):?>                   
                             <a href="/imgj?av=<?PHP echo(AVATAR_NAME);?>&jar=2&fn=<?PHP echo($orifilename);?>">
                         <?PHP else: ?>  
                             <a href="/file?av=<?PHP echo(AVATAR_NAME);?>&jar=2&fn=<?PHP echo($orifilename);?>">
                         <?PHP endif; ?> 
-                       <div style="width:100%;border:0px solid black;"><img src="/res/fileicon.png" align="center" style="width:64px;border:0px solid gray;"></div>
+                       <div style="width:100%;border:0px solid black;"><img class="file-ico" src="/res/fileicon.png" align="center"></div>
                         <div style="margin-top:10px;"><?PHP echo($filename);?> </div>
                         </a>  
                       </div> 
@@ -651,10 +657,10 @@
    
    if (!empty($aFilePaths)): ?>
   
-        <div id="magicjar3" style="float:left;margin:6%;margin-top:0px;margin-bottom:5px;width:90%;font-size:15px;font-family:Arial,Sans,Verdana;color:#000000;background:#f7ecb5;">    
-             <div class="magicjar3-content" style="width:100%;float:left;border:3px solid darkgray;border-radius:4px;color:#000000;"> 
+        <div id="magicjar3">    
+             <div class="magicjar3-content"> 
      
-               <div style="float:right;margin-left:99.9%;margin-right:2px;background:yellow;color:darkorange;">&nbsp;3&nbsp;</div>
+               <div class="magicjar-num">&nbsp;3&nbsp;</div>
                
                 <?PHP
       $iEntry = 1;          
@@ -668,13 +674,13 @@
           $marginbottom = "5px";
         }
         ?>
-                      <div class="file-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
+                      <div class="file-entry">  
                        <?PHP if (in_array($orifileExt, ["png", "jpg", "jpeg", "gif", "webp"])):?>                   
                           <a href="/imgj?av=<?PHP echo(AVATAR_NAME);?>&jar=3&fn=<?PHP echo($orifilename);?>">
                        <?PHP else: ?>  
                           <a href="/file?av=<?PHP echo(AVATAR_NAME);?>&jar=3&fn=<?PHP echo($orifilename);?>">
                        <?PHP endif; ?> 
-                        <div style="width:100%;border:0px solid black;"><img src="/res/fileicon.png" align="center" style="width:64px;border:0px solid gray;"></div>
+                        <div style="width:100%;border:0px solid black;"><img class="file-ico" src="/res/fileicon.png" align="center"></div>
                         <div style="margin-top:10px;"><?PHP echo($filename);?> </div>
                         </a>  
                       </div> 
@@ -686,19 +692,19 @@
     
        <?PHP endif; ?>
     
- <div id="friends" style="float:left;margin:6%;margin-top:50px;width:90%;font-size:15px;font-family:Arial,Sans,Verdana;color:#000000;background:#dadada">    
-   <div class="friends-content" style="width:100%;float:left;border:3px solid transparent;border-radius:4px;color:#000000;padding-top:10px;text-align:center;"> 
+ <div id="friends">    
+   <div class="friends-content"> 
      
-      <div style="font-family:'Press Start 2P';width:fit-content;margin:auto;color:#245269;"><?PHP echo(getResource0("My Network", $lang));?>:<br><br>
+      <div id="mynetworkTitle"><?PHP echo(getResource0("My Network", $lang));?>:<br><br>
      
       <?PHP
    $pattern = $FRIENDS_PATH . DIRECTORY_SEPARATOR . "*.txt";
    $aFilePaths = glob($pattern);
    if (empty($aFilePaths)): ?>
              
-              <div class="friend-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
+              <div class="friend-entry">  
                    <a href="http://5mode.com"> 
-                   <div style="width:100%;border:0px solid black;"><img src="/res/pic1.png" align="center" style="width:64px;border:0px solid gray;"></div>
+                   <div style="width:100%;border:0px solid black;"><img class="friend-ico" src="/res/pic1.png" align="center"></div>
                    <div style="margin-top:10px;"><?PHP echo(getResource0("Sample", $lang));?></div>
                    </a>
               </div> 
@@ -717,9 +723,9 @@
           $marginbottom = "5px";
         }
         ?>
-                      <div class="friend-entry" style="height:fit-content;min-height:120px;float:left;width:fit-content;border:0px solid green;padding:10px;text-align:center;">  
+                      <div class="friend-entry">  
                         <a href="<?PHP echo($link);?>">
-                        <div style="width:100%;border:0px solid black;"><img src="/res/pic1.png" align="center" style="width:64px;border:0px solid gray;"></div>
+                        <div style="width:100%;border:0px solid black;"><img class="friend-ico" src="/res/pic1.png" align="center"></div>
                         <div style="margin-top:10px;"><?PHP echo($filename);?> </div>
                         </a>  
                       </div> 
@@ -734,12 +740,12 @@
    </div> 
     
     
-  <div id="passworddisplay" style="float:left;position:fixed;top:680px;left:50px;width:255px;height:120px;background:darkgray;text-align:left;white-space:nowrap; font-family:Arial,Sans,Verdana; color:#000000; font-weight:900;z-index:99999;">
+  <div id="passworddisplay">
        <br>  
-        &nbsp;&nbsp;<input type="password" id="Password" name="Password" placeholder="password" style="font-size:18px;  background:transparent; width: 60%; border-radius:3px; font-weight:900;" value="<?php echo($password);?>" autocomplete="off">&nbsp;<input type="submit" value="<?PHP echo(getResource0("Go", $lang));?>" style="text-align:left;width:25%;color:#000000;"><br>
-        &nbsp;&nbsp;<input type="text" id="Salt" placeholder="salt" style="position:relative; top:+5px; font-size:18px; background:transparent; width: 90%; border-radius:3px; font-weight:900;" autocomplete="off"><br>
+        &nbsp;&nbsp;<input type="password" id="Password" name="Password" placeholder="password" value="<?php echo($password);?>" autocomplete="off">&nbsp;<input type="submit" value="<?PHP echo(getResource0("Go", $lang));?>" style="text-align:left;width:25%;color:#000000;"><br>
+        &nbsp;&nbsp;<input type="text" id="Salt" placeholder="salt" autocomplete="off"><br>
         <div style="text-align:center;">
-           <a href="#" onclick="showEncodedPassword();" style="position:relative; left:-2px; top:+5px; font-size:18px; font-weight:900; color:#000000;"><?PHP echo(getResource0("Hash Me", $lang));?>!</a>
+           <a id="hashMe" href="#" onclick="showEncodedPassword();"><?PHP echo(getResource0("Hash Me", $lang));?>!</a>
         </div>
  </div> 
 
@@ -748,7 +754,7 @@
   <div id="footerCont">&nbsp;</div>
   <div id="footer">
     <div style="float:left">
-        <select id="cbLang" style="margin-left:22px;font-size:10px;" onchange="changeLang(this);">
+        <select id="cbLang" onchange="changeLang(this);">
           <option value="en-US" <?PHP echo($lang==PHP_EN?"selected":"");?>>en</option>
             <option value="it-IT" <?PHP echo($lang==PHP_IT?"selected":"");?>>it</option>
             <option value="zh-CN" <?PHP echo($lang==PHP_CN?"selected":"");?>>cn</option>
