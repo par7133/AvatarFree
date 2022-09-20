@@ -94,6 +94,7 @@ switch ($url) {
           die("unknown file extension.");
       }
       echo(file_get_contents($docPath));
+      exit(0);
     } else {
       die("doc size over app limits.");
     }  
@@ -124,6 +125,7 @@ switch ($url) {
         header("Content-Type: image/" . $fileExt);
       }  
       echo(file_get_contents($picPath));
+      exit(0);
     } else {
       die("picture size over app limits.");
     }  
@@ -157,6 +159,7 @@ switch ($url) {
       }  
       //header("Content-Disposition: attachment; filename=" . $orioriFilename . ".$fileExt");
       echo(file_get_contents($filePath));
+      exit(0);
     } else {
       die("file size over app limits.");
     }  
@@ -186,6 +189,7 @@ switch ($url) {
       header("Content-Type: avatarfree/bin");
       header("Content-Disposition: attachment; filename=" . $orioriFilename . ".$fileExt");
       echo(file_get_contents($filePath));
+      exit(0);
     } else {
       die("file size over app limits.");
     }  
