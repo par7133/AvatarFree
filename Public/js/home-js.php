@@ -300,6 +300,12 @@ function setContentPos() {
   $("#picavatar").css("top", ((h - 255) / 2) + "px");
   $("#picavatar").css("left", ((w - 255) / 2) + "px");
   $("#picavatar").css("display", "inline");
+ <?PHP else: ?> 
+  if (window.innerWidth<800) {
+    $("#cudoz").css("display", "none");
+  } else {
+    $("#cudoz").css("display", "inline");
+  }  
   <?PHP endif; ?>
   $(".dragover").css("height", h + "px");
   $(".dragover").css("width", w + "px");
