@@ -436,18 +436,18 @@
    <form id="frmUpload" role="form" method="post" action="/<?PHP echo(AVATAR_NAME);?>?hl=<?PHP echo($lang);?>" target="_self" enctype="multipart/form-data">  
    
    <div id="title" style="position:relative;top:20px;left:50px;width:100%;float:left;font-size:25px;font-family:'Press Start 2P';border:0px solid blue;"> 
-        <div id="cudoz" style="width:255px;height:255px;float:left;border:0px solid yellow;">
+        <div id="avatarLogo" style="width:255px;height:255px;float:left;border:0px solid yellow;">
             <img id="picavatar" src="/img?av=<?PHP echo(AVATAR_NAME);?>&pic=<?PHP echo($profilePic);?>" align="middle" style="width:255px;height:255px;border-radius: 90%;">
         </div>  
-        <div id="cudoz" style="width:250px;height:255px;padding-top:122px;float:left;border:0px solid yellow;vertical-align:middle;">
+        <div id="avatarName" style="width:250px;height:255px;padding-top:122px;float:left;border:0px solid yellow;vertical-align:middle;">
           &nbsp;<?PHP echo(strtoupper(AVATAR_NAME));?>&nbsp;&nbsp;&nbsp;
         </div>  
         <div id="cudoz" style="width:250px;height:255px;padding-top:116px;float:left;border:0px solid green;vertical-align:middle;">
         <?PHP for ($i=1;$i<=$CUDOZ;$i++): ?>
-             <img id="cudozentry<?PHP echo($i);?>" src="/res/chicca_<?PHP echo($shortLang);?>.png" style="float:left;width:46px">    
+             <img id="cudozentry<?PHP echo($i);?>" class="cudoz-entry" src="/res/chicca_<?PHP echo($shortLang);?>.png" style="float:left;width:46px">    
         <?PHP endfor; ?>
         <?PHP for ($i=$CUDOZ+1;$i<=5;$i++): ?>
-             <img id="cudozentry<?PHP echo($i);?>" src="/res/chiccadis.png" style="float:left;width:46px">    
+             <img id="cudozentry<?PHP echo($i);?>" class="cudoz-entry" src="/res/chiccadis.png" style="float:left;width:46px">    
         <?PHP endfor; ?>               
          </div> 
 
