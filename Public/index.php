@@ -183,7 +183,7 @@ switch ($url) {
     $filePath = $JAR_PATH . DIRECTORY_SEPARATOR . $fileName;
        
     if (filesize($filePath) <= APP_FILE_MAX_SIZE) { 
-      header("Content-Type: unknown");
+      header("Content-Type: avatarfree/bin");
       header("Content-Disposition: attachment; filename=" . $orioriFilename . ".$fileExt");
       echo(file_get_contents($filePath));
     } else {
