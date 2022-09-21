@@ -345,7 +345,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
    
-  <!--<?PHP echo(APP_LICENSE);?>-->  
+<!--<?PHP echo(APP_LICENSE);?>-->  
   
   <title><?PHP echo(APP_TITLE);?></title>
 
