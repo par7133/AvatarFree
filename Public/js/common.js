@@ -41,6 +41,67 @@ function encryptSha2(string) {
   return jsSHAo.getHash("HEX");
 }
 
+/**
+ * Get the height of the whole document
+ * 
+ * @param {none} 
+ * @returns {int} the document height
+ */
+function getDocHeight() {
+  var D = document;
+  return Math.max(
+      D.body.scrollHeight, D.documentElement.scrollHeight,
+      D.body.offsetHeight, D.documentElement.offsetHeight,
+      D.body.clientHeight, D.documentElement.clientHeight
+  );
+}
+
+function getDocHeight2() {
+  var D = document;
+  var scrollMaxY;
+  if (window.scrollMaxY) {
+    scrollMaxY = window.scrollMaxY;
+  } else {
+    scrollMaxY = D.documentElement.scrollHeight;
+  }
+  var height = Math.max(
+      D.body.scrollHeight, scrollMaxY,    
+      D.body.offsetHeight, D.documentElement.offsetHeight,
+      D.body.clientHeight, D.documentElement.clientHeight
+  );
+  return height;
+}
+
+
+/**
+ * Get the width of the whole document
+ * 
+ * @param {none} 
+ * @returns {int} the document width
+ */
+function getDocWidth() {
+  var D = document;
+  return Math.max(
+      D.body.scrollWidth, D.documentElement.scrollWidth,
+      D.body.offsetWidth, D.documentElement.offsetWidth,
+      D.body.clientWidth, D.documentElement.clientWidth
+  );
+}
+
+function getDocWidth2() {
+  var D = document;
+  var scrollMaxX;
+  if (window.scrollMaxX) {
+    scrollMaxX = window.scrollMaxX;
+  } else {
+    scrollMaxX = D.documentElement.scrollWidth;
+  }
+  return Math.max(
+      D.body.scrollWidth, scrollMaxX,
+      D.body.offsetWidth, D.documentElement.offsetWidth,
+      D.body.clientWidth, D.documentElement.clientWidth
+  );
+}
 
 function rnd(min, max) {
   min = Math.ceil(min);
