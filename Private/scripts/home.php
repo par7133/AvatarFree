@@ -766,8 +766,10 @@
      
 <script src="static/js/home-js.php?hl=<?PHP echo($lang);?>&av=<?PHP echo(AVATAR_NAME);?>&cv=<?PHP echo($CURRENT_VIEW);?>&cu=<?PHP echo($CUDOZ);?>" type="text/javascript"></script>
 
+<?PHP if ($CURRENT_VIEW == PUBLIC_VIEW): ?>  
 <?php if (file_exists(APP_PATH . DIRECTORY_SEPARATOR . "metrics.html")): ?>
 <?php include(APP_PATH . DIRECTORY_SEPARATOR . "metrics.html"); ?> 
+<?php endif; ?>
 <?php endif; ?>
 
 </body>
