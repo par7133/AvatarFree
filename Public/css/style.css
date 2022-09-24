@@ -93,7 +93,7 @@ body {
 .blog-entry {
   width:100%;
   margin-bottom:0px;
-  min-height:120px;
+  min-height:80px;
   background:#FFFFFF;
   border:1px solid black;
   padding:30px;
