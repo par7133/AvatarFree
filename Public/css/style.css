@@ -31,6 +31,10 @@ body {
   /*background: #C2DBF2;*/
   background-image:url('/res/bg1.jpg');
 }
+.bbb {
+  color: #7bca2e;
+  text-decoration: underline;
+}
 #appMenuIco {
   float:left; 
   position:relative; 
@@ -528,6 +532,30 @@ body {
 }  
 .no-dropzone {
   cursor: not-allowed;
+}
+#originsDisplay {
+  float:left;
+  position:fixed;
+  top:680px;
+  left:20px;
+  width:275px;
+  height:120px;
+  font-family: Monospace, Verdana, Serif;
+  font-size: 14px;
+  background-color: #020401;
+  border: 3px solid lightgray;
+  text-align:left;
+  color: #FFFFFF;
+  white-space:nowrap; 
+  font-weight:900;
+  padding:10px;
+  padding-top:4px;
+  z-index:99999;
+  display:none;
+}
+.originLabel {
+  color: #7bca2e;
+  font-weight:900;
 }
 #pagetitle {
   float:left; 
