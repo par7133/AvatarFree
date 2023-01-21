@@ -50,29 +50,40 @@
   function startApp() {
     
     $("#HCsplash").css("display","none");
-    
-	  //$("#HCsplash").hide("slow");
+    //$("#HCsplash").hide("slow");
     $(document.body).css("background","#ffffff");
-	  $("#frmHC").show();
-	}			
+	
+    $("#originsDisplay").show();  
+	  
+    $("#frmHC").show();
+  }			
 
   function _startApp() {
     setTimeout("startApp()", 1000);    
   }
 
-	window.addEventListener("load", function() {
+  function setOriginsPos() {
+    h=parseInt(window.innerHeight);
+    w=parseInt(window.innerWidth);
+    mytop = parseInt(window.innerHeight - ($("#originsDisplay").height() + 60));
+    $("#originsDisplay").css("top", mytop+"px");
+    setTimeout("hideOrigins()",15000);
+  }
+
+  function hideOrigins() {
+    $("#originsDisplay").css("visibility","hidden");
+  }  
+	  
+  window.addEventListener("load", function() {
 	
     $("#frmHC").hide();
     
+    setTimeout("setOriginsPos()", 500);	  
+	  
     //Splash
     $("#HCsplash").show();	
-    
-    //$(document.body).css("background","#000000");
-	  //$("#HCsplash").show("slow");	  
-	  //setTimeout("hideTitle()", 2000);
-    //setTimeout("startApp()", 4000);
 
-	}, true);
+  }, true);
 
   window.addEventListener("load", function() {
       
@@ -152,6 +163,14 @@
 
 </form>
 
+<div id="originsDisplay">
+      <br>
+       &nbsp;<span class="originLabel">Coding:</span>&nbsp;Italy<br>         
+       &nbsp;<span class="originLabel">Server:</span>&nbsp;United States&nbsp;<br>
+       &nbsp;<span class="originLabel"><a href="http://metrica.yandex.com" class="bbb">Metrics</a>:</span>&nbsp;Russia&nbsp;<br>
+      <br>
+</div>   
+	
 <div class="footer">
 <div id="footerCont">&nbsp;</div>
 <div id="footer"><span style="background:#E1E1E1;color:black;opacity:1.0;margin-right:10px;">&nbsp;&nbsp;<a href="Public/dd.html">Disclaimer</a>&nbsp;&nbsp;A <a href="http://5mode.com">5 Mode</a> project and <a href="http://demo.5mode.com">WYSIWYG</a> system. Some rights reserved.</span></div>	
