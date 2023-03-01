@@ -35,7 +35,9 @@ $scriptPath = APP_SCRIPT_PATH;
 
 // PARAMETERS VALIDATION
 
-$url = strtolower(trim(substr(filter_input(INPUT_GET, "url", FILTER_SANITIZE_STRING), 0, 300), "/"));
+$url = filter_input(INPUT_GET, "url")??"";
+$url = strip_tags($url);
+$url = strtolower(trim(substr($url, 0, 300), "/"));
 
 switch ($url) {
   case "action":
@@ -58,11 +60,13 @@ switch ($url) {
     
     break;
   case "doc":
-    $avatar = filter_input(INPUT_GET, "av", FILTER_SANITIZE_STRING);
-
+    $avatar = filter_input(INPUT_GET, "av")??"";
+    $avatar = strip_tags($avatar);
+        
     $AVATAR_PATH = APP_DATA_PATH . DIRECTORY_SEPARATOR . $avatar;
     
-    $repo = filter_input(INPUT_GET, "re", FILTER_SANITIZE_STRING);
+    $repo = filter_input(INPUT_GET, "re")??"";
+    $repo = strip_tags($repo);
     switch ($repo) {
       case "cv":
         $REPO_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "cv";     
@@ -71,7 +75,8 @@ switch ($url) {
         die("unknown parma value:".$repo);
     }
     
-    $doc = filter_input(INPUT_GET, "doc", FILTER_SANITIZE_STRING);
+    $doc = filter_input(INPUT_GET, "doc")??"";
+    $doc = strip_tags($doc);
        
     $originalFilename = pathinfo($doc, PATHINFO_FILENAME);
     $destFilename = explode("|",$originalFilename)[1];
@@ -101,12 +106,14 @@ switch ($url) {
     
     break;
   case "img":
-    $avatar = filter_input(INPUT_GET, "av", FILTER_SANITIZE_STRING);
-
+    $avatar = filter_input(INPUT_GET, "av")??"";
+    $avatar = strip_tags($avatar);    
+    
     $AVATAR_PATH = APP_DATA_PATH . DIRECTORY_SEPARATOR . $avatar;
     $GALLERY_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "gallery";     
 
-    $pic = filter_input(INPUT_GET, "pic", FILTER_SANITIZE_STRING);
+    $pic = filter_input(INPUT_GET, "pic")??"";
+    $pic = strip_tags($pic);
        
     $originalFilename = pathinfo($pic, PATHINFO_FILENAME);
     $originalFileExt = pathinfo($pic, PATHINFO_EXTENSION);
@@ -132,8 +139,9 @@ switch ($url) {
     
     break;
   case "imgj":
-    $avatar = filter_input(INPUT_GET, "av", FILTER_SANITIZE_STRING);
-    $jar = (int)substr(filter_input(INPUT_GET, "jar", FILTER_SANITIZE_STRING),0,1);
+    $avatar = filter_input(INPUT_GET, "av")??"";
+    $avatar = strip_tags($avatar);
+    $jar = (int)substr(strip_tags(filter_input(INPUT_GET, "jar")??""),0,1);
     if ($jar >= 1 && $jar <= 3) {
     } else {
       die("jar parameter error.");
@@ -142,7 +150,8 @@ switch ($url) {
     $AVATAR_PATH = APP_DATA_PATH . DIRECTORY_SEPARATOR . $avatar;
     $JAR_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "magicjar" . $jar;     
 
-    $fileName = filter_input(INPUT_GET, "fn", FILTER_SANITIZE_STRING);
+    $fileName = filter_input(INPUT_GET, "fn")??"";
+    $fileName = strip_tags($fileName);
        
     $originalFilename = pathinfo($fileName, PATHINFO_FILENAME);
     $orioriFilename = explode("|", $originalFilename)[1];
@@ -166,8 +175,9 @@ switch ($url) {
     
     break;    
   case "file":
-    $avatar = filter_input(INPUT_GET, "av", FILTER_SANITIZE_STRING);
-    $jar = (int)substr(filter_input(INPUT_GET, "jar", FILTER_SANITIZE_STRING),0,1);
+    $avatar = filter_input(INPUT_GET, "av")??"";
+    $avatar = strip_tags($avatar);
+    $jar = (int)substr(strip_tags(filter_input(INPUT_GET, "jar")??""),0,1);
     if ($jar >= 1 && $jar <= 3) {
     } else {
       die("jar parameter error.");
@@ -176,8 +186,9 @@ switch ($url) {
     $AVATAR_PATH = APP_DATA_PATH . DIRECTORY_SEPARATOR . $avatar;
     $JAR_PATH = $AVATAR_PATH . DIRECTORY_SEPARATOR . "magicjar" . $jar;     
 
-    $fileName = filter_input(INPUT_GET, "fn", FILTER_SANITIZE_STRING);
-       
+    $fileName = filter_input(INPUT_GET, "fn")??"";
+    $fileName = strip_tags($fileName);    
+    
     $originalFilename = pathinfo($fileName, PATHINFO_FILENAME);
     $orioriFilename = explode("|", $originalFilename)[1];
     $originalFileExt = pathinfo($fileName, PATHINFO_EXTENSION);
