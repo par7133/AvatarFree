@@ -46,13 +46,14 @@
  
  // PAGE PARAMETERS
  $lang = APP_DEF_LANG;
- $lang1 = substr(filter_input(INPUT_GET, "hl", FILTER_SANITIZE_STRING), 0, 5);
+ $lang1 = substr(strip_tags(filter_input(INPUT_GET, "hl")??""), 0, 5);
  if ($lang1 !== PHP_STR) {
    $lang = $lang1;
  }
  $shortLang = getShortLang($lang);
  
- $password = filter_input(INPUT_POST, "Password");
+ $password = filter_input(INPUT_POST, "Password")??"";
+ $password = strip_tags($password);
  if ($password !== PHP_STR) {	
    $hash = hash("sha256", $password . APP_SALT, false);
 
@@ -66,9 +67,9 @@
    $CURRENT_VIEW = PUBLIC_VIEW;
  } 
 
- $magicJar1 = (int)substr(filter_input(INPUT_POST, "txtMagicJar1"), 0, 1);
- $magicJar2 = (int)substr(filter_input(INPUT_POST, "txtMagicJar2"), 0, 1);
- $magicJar3 = (int)substr(filter_input(INPUT_POST, "txtMagicJar3"), 0, 1);
+ $magicJar1 = (int)substr(strip_tags(filter_input(INPUT_POST, "txtMagicJar1")??""), 0, 1);
+ $magicJar2 = (int)substr(strip_tags(filter_input(INPUT_POST, "txtMagicJar2")??""), 0, 1);
+ $magicJar3 = (int)substr(strip_tags(filter_input(INPUT_POST, "txtMagicJar3")??""), 0, 1);
 
  
  function uploadNewRes() {
@@ -282,7 +283,8 @@
    
    $destPath = $FRIENDS_PATH;
    
-   $s = filter_input(INPUT_POST, "f", FILTER_SANITIZE_STRING);
+   $s = filter_input(INPUT_POST, "f")??"";
+   $s = strip_tags($s);
    if ($s != PHP_STR) {
    //echo($s);
    //exit(0);
