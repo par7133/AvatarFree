@@ -34,6 +34,9 @@ define('APP_NAME', "AvatarFree");
 define('APP_TITLE', "Avatar Free: everyone its social presence.");
 
 // password: your_password
+// define('APP_BLOG_HASH', "");
+
+// password: your_password
 // salt: your_salt
 define('APP_HASH', "");
 define('APP_SALT', "yoursalt");
