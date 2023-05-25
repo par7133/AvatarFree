@@ -57,9 +57,20 @@
  if ($password !== PHP_STR) {	
    $hash = hash("sha256", $password . APP_SALT, false);
 
-   if ($hash !== APP_HASH) {
-     $password=PHP_STR;	
-   }	 
+   if (defined("APP_" . strtoupper(AVATAR_NAME) . "_HASH")) {
+      if ($hash !== constant("APP_" . strtoupper(AVATAR_NAME) . "_HASH")) {
+        $password=PHP_STR;	
+      }	 
+   } else {
+      if ($hash !== APP_HASH) {
+        $password=PHP_STR;	
+      }	 
+   }   
+   
+//  if ($hash !== APP_HASH) {
+//    $password=PHP_STR;	
+//  }	 
+   
  } 
  if ($password !== PHP_STR) {
    $CURRENT_VIEW = ADMIN_VIEW;
