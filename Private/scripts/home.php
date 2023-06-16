@@ -51,6 +51,8 @@
    $lang = $lang1;
  }
  $shortLang = getShortLang($lang);
+
+ $blogSP = (int)substr(strip_tags(filter_input(INPUT_GET, "blogSP")??""), 0, 5);
  
  $password = filter_input(INPUT_POST, "Password")??"";
  $password = strip_tags($password);
@@ -65,11 +67,11 @@
       if ($hash !== APP_HASH) {
         $password=PHP_STR;	
       }	 
-   }   
+   }
    
-//  if ($hash !== APP_HASH) {
-//    $password=PHP_STR;	
-//  }	 
+//   if ($hash !== APP_HASH) {
+//     $password=PHP_STR;	
+//   }	 
    
  } 
  if ($password !== PHP_STR) {
@@ -518,9 +520,16 @@
         <?PHP else: ?>
                 <?PHP
       $CUDOZ++;          
-      $iEntry = 1;          
+      $iEntry = 1;
+      $iCurEntry = 1;         
       arsort($aFilePaths, SORT_STRING);
+      //echo("blogSP=".$blogSP);
       foreach ($aFilePaths as $filePath) {
+        //echo("iCurEntry=".$iCurEntry);
+        if ($iCurEntry<($blogSP+1)) {
+          $iCurEntry++;
+          continue;
+        }  
         if ($iEntry>APP_BLOG_MAX_POSTS) {
           break;
         }
@@ -537,9 +546,45 @@
                            </div> 
                           </div>   
                  <?PHP 
-       $iEntry++;          
+       $iEntry++;
+       $iCurEntry++;          
       }?>
-        <?PHP endif; ?>
+   <?PHP endif; ?>
+   
+   <?PHP
+    $totPages = (int)(count($aFilePaths)/APP_BLOG_MAX_POSTS); 
+    if ($totPages < (count($aFilePaths)/APP_BLOG_MAX_POSTS)) {
+      $totPages++;
+    }
+    $firstPost = 0;
+    $prevPost = $blogSP - APP_BLOG_MAX_POSTS;
+    if ($prevPost < 0) {
+      $prevPost = 0;
+    }    
+    $nextPost = $blogSP + APP_BLOG_MAX_POSTS;
+    if ($nextPost > (($totPages - 1) * APP_BLOG_MAX_POSTS)) {
+      $nextPost = (($totPages - 1) * APP_BLOG_MAX_POSTS);
+    }
+    if ($nextPost < 0) {
+      $nextPost = 0;
+    }       
+    $lastPost = (($totPages - 1) * APP_BLOG_MAX_POSTS);
+    if ($lastPost < 0) {
+      $lastPost = 0;
+    }    
+   ?>
+   
+   <br><br>
+   
+   <div style="text-align:center;">
+     <a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($firstPost);?>"><img src="/res/first.png" style="width:45px;"></a>
+     <a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($prevPost);?>"><img src="/res/arrow-left2.png" style="width:45px;"></a>
+     <a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($nextPost);?>"><img src="/res/arrow-right2.png" style="width:45px;"></a>
+     <a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($lastPost);?>"><img src="/res/last.png" style="width:45px;"></a>
+   </div>  
+   
+   <br><br>
+          
    </div> 
 
  <div id="gallery">    
@@ -777,13 +822,17 @@
            
  <?PHP endif; ?>           
      
-<script src="static/js/home-js.php?hl=<?PHP echo($lang);?>&av=<?PHP echo(AVATAR_NAME);?>&cv=<?PHP echo($CURRENT_VIEW);?>&cu=<?PHP echo($CUDOZ);?>" type="text/javascript"></script>
+<script src="/static/js/home-js.php?hl=<?PHP echo($lang);?>&av=<?PHP echo(AVATAR_NAME);?>&cv=<?PHP echo($CURRENT_VIEW);?>&cu=<?PHP echo($CUDOZ);?>" type="text/javascript"></script>
 
 <?PHP if ($CURRENT_VIEW == PUBLIC_VIEW): ?>  
 
 <!-- SKINNER CODE -->
-<?php if (file_exists(APP_PATH . DIRECTORY_SEPARATOR . "skinner.html")): ?>
-<?php include(APP_PATH . DIRECTORY_SEPARATOR . "skinner.html"); ?> 
+<?php if (is_readable($AVATAR_PATH . DIRECTORY_SEPARATOR . "skinner.html")): ?>
+<?php include($AVATAR_PATH . DIRECTORY_SEPARATOR . "skinner.html"); ?> 
+<?php else: ?>
+      <?php if (file_exists(APP_PATH . DIRECTORY_SEPARATOR . "skinner.html")): ?>
+      <?php include(APP_PATH . DIRECTORY_SEPARATOR . "skinner.html"); ?> 
+      <?php endif; ?>
 <?php endif; ?>
 
 <!-- METRICS CODE -->
