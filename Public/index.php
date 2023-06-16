@@ -47,15 +47,22 @@ switch ($url) {
     break;
   case "":
   case "home":   
-    define("SCRIPT_NAME", "home");
-    define("SCRIPT_FILENAME", "home.php");   
-
-    $pattern = APP_DATA_PATH . DIRECTORY_SEPARATOR . "*";
-    $aAvatarPaths = glob($pattern, GLOB_ONLYDIR);
-    if (empty($aAvatarPaths)) {
-      die("<br>&nbsp;No avatar exists yet: type in the url with your avatar name like http://" . $_SERVER['HTTP_HOST']. "/&lt;your avatar&gt;.<br>&nbsp;Login with the password and drag-n-drop here all the resources you want to associate to it. <br><br>&nbsp;Links by text and first dropped picture will be your avatar image.");
+  
+    if (defined("APP_HOME_PATH") && (APP_HOME_PATH !== PHP_STR) && is_readable(APP_HOME_PATH)) {
+      define("SCRIPT_NAME", "homeproxy");
+      define("SCRIPT_FILENAME", "homeproxy.php");   
     } else {
-      define("AVATAR_NAME", basename($aAvatarPaths[0]));
+      
+      define("SCRIPT_NAME", "home");
+      define("SCRIPT_FILENAME", "home.php");   
+    
+      $pattern = APP_DATA_PATH . DIRECTORY_SEPARATOR . "*";
+      $aAvatarPaths = glob($pattern, GLOB_ONLYDIR);
+      if (empty($aAvatarPaths)) {
+        die("<br>&nbsp;No avatar exists yet: type in the url with your avatar name like http://" . $_SERVER['HTTP_HOST']. "/&lt;your avatar&gt;.<br>&nbsp;Login with the password and drag-n-drop here all the resources you want to associate to it. <br><br>&nbsp;Links by text and first dropped picture will be your avatar image.");
+      } else {
+        define("AVATAR_NAME", basename($aAvatarPaths[0]));
+      }
     }
     
     break;
