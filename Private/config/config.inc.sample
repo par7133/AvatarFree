@@ -43,6 +43,7 @@ define('APP_SALT', "yoursalt");
 
 define('APP_HOST', "YourAvatarFree.com");
 define('APP_PATH', "/var/www/YourWebApp/Public");
+define('APP_HOME_PATH', "");
 define('APP_PRIVATE_PATH', "/var/www/YourWebApp/Private");
 define('APP_SCRIPT_PATH', "/var/www/YourWebApp/Private/scripts");
 define('APP_AJAX_PATH', "/var/www/YourWebApp/Private/scripts_ajax");
@@ -75,6 +76,7 @@ define('APP_DEF_LANG', "en-US");
 define('APP_DEF_PROFILE_PIC', "/res/pic1.png");
 define('APP_FILE_MAX_SIZE', 496000);
 define('APP_BLOG_MAX_POSTS', 20);
+define('APP_PAGINATION', false);
 
 $CONFIG = [
 
@@ -91,6 +93,7 @@ $CONFIG = [
       'SALT' => "yoursalt",        
       'HOST' => "YourAvatarFree.com", 
       'PATH' => "/var/www/YourWebApp/Public",
+      'HOME_PATH' => "",
       'PRIVATE_PATH' => "/var/www/YourWebApp/Private", 
       'SCRIPT_PATH' => "/var/www/YourWebApp/Private/scripts",
       'AJAX_PATH' => "/var/www/YourWebApp/Private/scripts_ajax",
@@ -121,7 +124,8 @@ LICENSETEXT
       'DEF_LANG' => "en-US",
       'DEF_PROFILE_PIC' => "/res/pic1.png", 
       'FILE_MAX_SIZE' => 496000,
-      'BLOG_MAX_POSTS' => 20 
+      'BLOG_MAX_POSTS' => 20,
+      'PAGINATION' => false
       ]
     
     ];  
