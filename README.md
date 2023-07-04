@@ -25,7 +25,7 @@ As you are going to run Avatar Free in the PHP process context, using a limited 
 
 You can access your avatar by http://yourdomain.com/<your_avatar>. Login with the password for the admin view. Drag-n-drop all your resources in the browser window.<br>
 
-Hope you can enjoy it and let us know about any feedback: <a href="mailto:info@avatarfree.org" style="color:#e6d236;">info@avatarfree.org</a>
+Hope you can enjoy it and let us know about any feedback: <a href="mailto:posta@elettronica.lol" style="color:#e6d236;">posta@elettronica.lol</a>
 
 <br>
 
