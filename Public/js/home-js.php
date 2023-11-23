@@ -33,7 +33,7 @@
  // PARAMETERS AND VARIABLES INIT
  
  $lang = APP_DEF_LANG;
- $lang1 = substr(filter_input(INPUT_GET, "hl", FILTER_SANITIZE_STRING), 0, 5);
+ $lang1 = substr(filter_input(INPUT_GET, "hl")??"", 0, 5);
  $lang1 = strip_tags($lang1);
  if ($lang1 !== PHP_STR) {
    $lang = $lang1;
