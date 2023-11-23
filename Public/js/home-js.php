@@ -34,16 +34,20 @@
  
  $lang = APP_DEF_LANG;
  $lang1 = substr(filter_input(INPUT_GET, "hl", FILTER_SANITIZE_STRING), 0, 5);
+ $lang1 = strip_tags($lang1);
  if ($lang1 !== PHP_STR) {
    $lang = $lang1;
  }
  $shortLang = getShortLang($lang);
  
- $AVATAR_NAME=filter_input(INPUT_GET, "av", FILTER_SANITIZE_STRING);
+ $AVATAR_NAME=filter_input(INPUT_GET, "av")??"";
+ $AVATAR_NAME = strip_tags($AVATAR_NAME);
  
- $CURRENT_VIEW=filter_input(INPUT_GET, "cv", FILTER_SANITIZE_STRING);
+ $CURRENT_VIEW=filter_input(INPUT_GET, "cv")??"";
+ $CURRENT_VIEW = strip_tags($CURRENT_VIEW);
  
- $CUDOZ=filter_input(INPUT_GET, "cu", FILTER_SANITIZE_STRING);
+ $CUDOZ=filter_input(INPUT_GET, "cu")??"";
+ $CUDOZ = strip_tags($CUDOZ);
 ?>
  
  var myToolsOnIntID;
