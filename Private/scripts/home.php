@@ -287,7 +287,7 @@
         
      }	 
    } else {
-     echo("WARNING: No file uploaded (err-pip-po).");
+     //echo("WARNING: No file uploaded (err-pip-po).");
    }
  }
 
@@ -402,7 +402,7 @@
        <img id="picavatar" src="/img?av=<?PHP echo(AVATAR_NAME);?>&pic=<?PHP echo($profilePic);?>" align="middle">  
    </div> 
     
-    <input id="files" name="files[]" type="file" accept=".gif,.png,.jpg,.jpeg" style="visibility: hidden;" multiple>
+    <input id="files" name="files[]" type="file" accept=".*" style="visibility: hidden;" multiple>
       
     <input type="hidden" id="a" name="a">    
     <input type="hidden" id="f" name="f">  
