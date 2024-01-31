@@ -102,14 +102,13 @@
    //echo_ifdebug(true, "AVATAR_PATH#1=");
    //echo_ifdebug(true, $AVATAR_PATH);
    
-   //if (!empty($_FILES['files'])) {
-   if (!empty($_FILES['filesdd']['tmp_name'][0])) {
-	   
-     //no file uploaded
-     //$uploads = (array)fixMultipleFileUpload($_FILES['files']);
-     //if ($uploads[0]['error'] === UPLOAD_ERR_NO_FILE) {
+   if (!empty($_FILES['files']['tmp_name'][0]) ||  !empty($_FILES['filesdd']['tmp_name'][0])) {
+      
+     $uploads = (array)fixMultipleFileUpload($_FILES['files']);
+     if ($uploads[0]['error'] === PHP_UPLOAD_ERR_NO_FILE) {
        $uploads = (array)fixMultipleFileUpload($_FILES['filesdd']);
-     //}   
+     }   
+     
      //if ($uploads[0]['error'] === PHP_UPLOAD_ERR_NO_FILE) {
      //  echo("WARNING: No file uploaded.");
      //  return;
@@ -287,6 +286,8 @@
        $i++;
         
      }	 
+   } else {
+     echo("WARNING: No file uploaded (err-pip-po).");
    }
  }
 
@@ -367,7 +368,7 @@
   <link rel="shortcut icon" href="/favicon.ico" />
 
   <meta name="description" content="Welcome to Avatar Free! Let everyone have its social presence."/>
-  <meta name="keywords" content="Avatar Free,social,presence,avatarfree.5mode-foss.eu,on,premise,solution"/>
+  <meta name="keywords" content="Avatar Free,social,presence,avatarfree.org,on,premise,solution"/>
   <meta name="robots" content="index,follow"/>
   <meta name="author" content="5 Mode"/>
   
@@ -397,8 +398,12 @@
     
   <div class="dragover" dropzone="copy">  
     
-    <img id="picavatar" src="/img?av=<?PHP echo(AVATAR_NAME);?>&pic=<?PHP echo($profilePic);?>" align="middle">  
-  
+   <div id="fireupload" onclick="$('#files').click()">
+       <img id="picavatar" src="/img?av=<?PHP echo(AVATAR_NAME);?>&pic=<?PHP echo($profilePic);?>" align="middle">  
+   </div> 
+    
+    <input id="files" name="files[]" type="file" accept=".gif,.png,.jpg,.jpeg" style="visibility: hidden;" multiple>
+      
     <input type="hidden" id="a" name="a">    
     <input type="hidden" id="f" name="f">  
     
@@ -573,9 +578,9 @@
       $lastPost = 0;
     }    
    ?>
-
-   <?PHP if (defined("APP_PAGINATION") && APP_PAGINATION):?> 
-	    
+   
+   <?PHP if (defined("APP_PAGINATION") && APP_PAGINATION): ?>
+   
    <br><br>
    
    <div style="text-align:center;">
@@ -584,9 +589,9 @@
      <a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($nextPost);?>"><img src="/res/arrow-right2.png" style="width:45px;"></a>
      <a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($lastPost);?>"><img src="/res/last.png" style="width:45px;"></a>
    </div>  
-
-   <?PHP endif; ?>
-	 
+   
+   <?PHP endif; ?>    
+       
    <br><br>
           
    </div> 
@@ -826,7 +831,7 @@
            
  <?PHP endif; ?>           
      
-<script src="/static/js/home-js.php?hl=<?PHP echo($lang);?>&av=<?PHP echo(AVATAR_NAME);?>&cv=<?PHP echo($CURRENT_VIEW);?>&cu=<?PHP echo($CUDOZ);?>" type="text/javascript"></script>
+<script src="/js/home-js.php?hl=<?PHP echo($lang);?>&av=<?PHP echo(AVATAR_NAME);?>&cv=<?PHP echo($CURRENT_VIEW);?>&cu=<?PHP echo($CUDOZ);?>" type="text/javascript"></script>
 
 <?PHP if ($CURRENT_VIEW == PUBLIC_VIEW): ?>  
 
