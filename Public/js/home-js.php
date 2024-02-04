@@ -313,10 +313,14 @@ function setContentPos() {
   $("#picavatar").css("display", "inline");
  <?PHP else: ?> 
   if (window.innerWidth<800) {
+    $("#header").css("display", "none");
+    $("#headerMob").css("display", "inline");    
     $("#cudoz").css("display", "none");
   } else {
+    $("#header").css("display", "inline");
+    $("#headerMob").css("display", "none");    
     $("#cudoz").css("display", "inline");
-  }  
+  }   
   <?PHP endif; ?>
   $(".dragover").css("height", h + "px");
   $(".dragover").css("width", w + "px");
@@ -360,4 +364,3 @@ window.addEventListener("resize", function() {
   setTimeout("setFooterPos()", 1000);
 
 }, true);
-  
