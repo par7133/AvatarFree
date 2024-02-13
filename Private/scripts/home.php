@@ -460,7 +460,7 @@
       <span onclick="showHowTo();"><?PHP echo(getResource0("How-to: Manage your avatars in Avatar Free", $lang));?></span>
       <br><br>
    </div> -->
-   <div class="header" style="margin-top:18px;margin-bottom:18px;">
+   <div id="header" class="header" style="margin-top:18px;margin-bottom:18px;">
         <a href="http://avatarfree.5mode-foss.eu" target="_self" style="color:#000000; text-decoration: none;">&nbsp;<img src="Public/res/AFlogo.png" align="middle" style="position:relative;top:-5px;width:22px;">&nbsp;Avatar Free</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/par7133/AvatarFree" style="color:#000000;"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:posta@elettronica.lol" style="color:#000000;"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:+39-378-0812391" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:#000000;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a>
    </div>
    <div id="headerMob" class="header" style="margin-top:18px;margin-bottom:18px;display:none">
