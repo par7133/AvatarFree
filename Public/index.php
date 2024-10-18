@@ -133,7 +133,7 @@ switch ($url) {
     }  
        
     if (filesize($picPath) <= APP_FILE_MAX_SIZE) { 
-      if ($fileExt = "jpg") {
+      if ($fileExt === "jpg") {
         header("Content-Type: image/jpeg");
       } else {
         header("Content-Type: image/" . $fileExt);
@@ -168,7 +168,7 @@ switch ($url) {
     $filePath = $JAR_PATH . DIRECTORY_SEPARATOR . $fileName;
        
     if (filesize($filePath) <= APP_FILE_MAX_SIZE) { 
-      if ($fileExt = "jpg") {
+      if ($fileExt === "jpg") {
         header("Content-Type: image/jpeg");
       } else {
         header("Content-Type: image/" . $fileExt);
