@@ -1,7 +1,5 @@
 <p align="center">
-    <a href="https://avatarfree.org">
-        <img src="/Public/res/AFlogo2.png" width="188" title="Avatar Free" alt="Avatar Free">
-    </a>
+    <img src="./Public/res/AFlogo2.png" width="188" title="Avatar Free" alt="Avatar Free">
 </p>
 
 # Avatar Free
