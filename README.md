@@ -21,7 +21,7 @@ As you are going to run Avatar Free in the PHP process context, using a limited 
 <li>Set BLOG_MAX_POSTS to limit the number of visible posts in the blog.</li>
 </ol> 
 
-You can access your avatar by http://yourdomain.com/<your_avatar>. Login with the password for the admin view. Drag-n-drop all your resources in the browser window. File .txt feed your blog, .png and .jpg your gallery, text links your network, etc.<br>
+You can access your avatar by http://yourdomain.com/<your_avatar>. Login with the password for the admin view. Drag-n-drop all your resources in the browser window. Files .txt feed your blog, .png and .jpg your gallery, text links your network, etc.<br>
 
 For any need of software additions, plugins and improvements please write to <a href="mailto:info@5mode.com">info@5mode.com</a>  
 
