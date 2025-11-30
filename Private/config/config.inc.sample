@@ -41,7 +41,7 @@ define('APP_TITLE', "Avatar Free: everyone its social presence.");
 define('APP_HASH', "");
 define('APP_SALT', "yoursalt");
 
-define('APP_HOST', "YourAvatarFree.com");
+define('APP_HOST', "yoursitename.xyz");
 define('APP_PATH', "/var/www/YourWebApp/Public");
 define('APP_HOME_PATH', "");
 define('APP_PRIVATE_PATH', "/var/www/YourWebApp/Private");
@@ -91,7 +91,7 @@ $CONFIG = [
       // salt: your_salt
       'HASH' => "",
       'SALT' => "yoursalt",        
-      'HOST' => "YourAvatarFree.com", 
+      'HOST' => "yoursitename.xyz", 
       'PATH' => "/var/www/YourWebApp/Public",
       'HOME_PATH' => "",
       'PRIVATE_PATH' => "/var/www/YourWebApp/Private", 
